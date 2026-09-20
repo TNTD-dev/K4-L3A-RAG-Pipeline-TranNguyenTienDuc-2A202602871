@@ -156,3 +156,40 @@ class DeterministicGenerationAdapter:
     def stream(self, system_prompt: str, user_message: str) -> Iterable[str]:
         answer = self.complete(system_prompt, user_message)
         yield from answer.split(" ")
+
+
+class JinaRerankerAdapter:
+    """Reranker using Jina AI API."""
+
+    def __init__(self, api_key: str, model: str = "jina-reranker-v2-base-multilingual") -> None:
+        if not api_key.strip():
+            raise ValueError("api_key is required for Jina reranker")
+        self.api_key, self.model = api_key, model
+
+    def rerank(self, query: str, documents: list[str]) -> list[float]:
+        if not documents:
+            return []
+        import urllib.request
+        import urllib.error
+        import json
+
+        url = "https://api.jina.ai/v1/rerank"
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {self.api_key}"
+        }
+        data = {
+            "model": self.model,
+            "query": query,
+            "documents": documents
+        }
+        req = urllib.request.Request(url, data=json.dumps(data).encode("utf-8"), headers=headers)
+        try:
+            with urllib.request.urlopen(req, timeout=10) as response:
+                payload = json.loads(response.read().decode("utf-8"))
+                # Jina returns a list of results in "results" array, each has "index" and "relevance_score"
+                # Sort by index to match original document order
+                results = sorted(payload.get("results", []), key=lambda x: x["index"])
+                return [r.get("relevance_score", 0.0) for r in results]
+        except urllib.error.URLError:
+            raise RuntimeError("Jina reranker provider unavailable")

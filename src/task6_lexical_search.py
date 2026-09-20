@@ -17,8 +17,8 @@ def build_bm25_index(corpus: list[dict]):
     """Tạo BM25 index từ cùng corpus chunks của Task 4."""
     tokenized = [_tokens(item.get("content", "")) for item in corpus]
     try:
-        from rank_bm25 import BM25Okapi
-        return BM25Okapi(tokenized)
+        from rank_bm25 import BM25Plus
+        return BM25Plus(tokenized)
     except Exception:
         class SimpleBM25:
             def __init__(self, rows):

@@ -1,16 +1,468 @@
 ---
 source_id: "student-code-of-conduct-page"
 source: "article_08.json"
-title: "student-affairs-regulations-code-of-conduct"
+title: "Student Code of Conduct - VinUni Policy"
 doc_type: "news"
 url: "https://policy.vinuni.edu.vn/all-policies/student-affairs-regulations-code-of-conduct/"
-crawl_timestamp: "2026-09-20T07:44:39.658689+00:00"
+crawl_timestamp: "2026-09-20T08:30:19.674940+00:00"
 mode: "student_life"
 classification: "Public"
 policy_version: "VU_CTSV02.EN-V5.0"
 effective_date: "2025-12-24"
 ---
 
-# student-affairs-regulations-code-of-conduct
+# Student Code of Conduct - VinUni Policy
 
-Title: Student Code of Conduct - VinUni Policy URL Source: http://policy.vinuni.edu.vn/all-policies/student-affairs-regulations-code-of-conduct/ Published Time: 2023-05-20T04:25:18+00:00 Markdown Content: * Policy Content * Policy Status * PDF version **For Vietnamese version, please access this [link](https://policy.vinuni.edu.vn/wp-content/uploads/2026/08/VU_CTSV02.VN_Quy-che-cong-tac-sinh-vien_05082026.pdf).** ## 1. PURPOSE ### **1.1 Purpose** The Student Code of Conduct outlines the standards of behavior expected from all VinUniversity students as members of a respectful, inclusive, and academically rigorous learning community. This Code aims to: * Promote ethical behavior and a culture of mutual respect among students, faculty, staff, and the broader community; * Define the rights and responsibilities of students as members of the University; * Clearly outline prohibited conduct and associated disciplinary consequences; * Guide students in making responsible decisions aligned with the values of VinUniversity; * Serve as a foundation for maintaining a positive University reputation and contributing to the public good. The Code is both educational and regulatory in nature, designed to help students grow as responsible global citizens and future leaders. ### **1.2 Scope** This Student Code of Conduct applies to all individuals enrolled at VinUniversity, including: * Undergraduate and graduate students * Exchange, visiting, dual-degree, and transfer students * Participants enrolled in non-degree, part-time, certificate, executive education, or other University-approved training programs. Unless otherwise specified, this Code applies to all learners participating in VinUniversity’s academic and training activities. Certain provisions relating to student services, governance, and academic administration apply only to the categories of learners for whom those provisions are relevant. The Code governs behavior in all contexts related to the University, including but not limited to: * Activities on University premises (classrooms, labs, libraries, dormitory etc.) * University-sponsored events and programs off-campus, including internships, fieldwork, and study abroad * Digital platforms and online environments affiliated with the University (e.g., email, LMS, social media) * Conduct that occurs off-campus but may adversely affect the University community, its reputation, or the safety and well-being of its members The Code is applicable throughout the student’s enrollment, including during breaks and periods between terms. All students are expected to comply with this Code and uphold the values of VinUniversity at all times, whether on or off campus. ## **2. RIGHTS AND RESPONSIBILITIES OF STUDENTS**Top of page ### **2.1. Rights of Students** **Enrollment and Access**To be officially enrolled in their admitted academic program and granted access to essential resources, including a student ID card and student portal account for academic and administrative purposes **Respect and Transparency**To be treated with dignity, fairness, and equality; to be fully informed of the academic policies, student life regulations, code of conduct, and other policies applicable to students at VinUniversity. **Learning and Development Support**To receive favorable conditions for academic learning, scientific research, and personal development, including: a) Access to library resources, learning facilities, laboratories, and equipment for academic, research, cultural, artistic, and sports activities; b) Opportunities to participate in scientific research, academic competitions, Olympiads, and innovation contests; c) Access to healthcare services as regulated by Vietnamese law and VinUniversity policies; d) Eligibility to apply for student exchange programs, international learning experiences, and graduate-level programs; e) Participation in legally recognized student organizations such as the Ho Chi Minh Communist Youth Union and the Vietnam Students’ Association, along with cultural, artistic, and sports activities aligned with the University’s mission; f) Access to student support services (e.g., career counseling, mental health services, special circumstances support); g) The right to request academic leave, deferment, acceleration, extension, transfer, or dual degrees, and to observe public holidays and semester breaks as prescribed. **Scholarships and Social Benefits**To be considered for scholarships and financial assistance per University and national regulations, including access to benefits such as public service discounts (transport, entertainment, cultural sites) as stipulated by the Government of Vietnam. **Feedback and Representation**To provide feedback and participate in quality assurance activities; to propose improvements directly or through legal representatives; and to file complaints or petitions to University leadership concerning legitimate rights and interests. **Accommodation**To be considered for on-campus or off-campus housing and to be prioritized based on applicable criteria and availability. **Graduation Support**Upon fulfilling graduation requirements, students have the right to receive their degree, transcript, and other academic documents, and to be supported in administrative processes related to graduation. ### **2.2. Responsibilities of Students** 1. To fully comply with the general guidance of the laws of Vietnam, the regulations of VinUni, the home college(s), and other education supporting units. 2. To study and practice according to the academic program and plan of VinUni; to fulfill the students’ duties according to VinUni’s Regulations and Guidelines; to be proactive in self-study, research, and maintain integrity, ethical values and personal conducts. 3. To respect VinUni faculty members, administrators, and administrative staff, and other personnel on- and off-campus, to promote solidarity and mutual support among peers; and uphold cultural norms and values within the university environment. 4. To communicate and conduct themselves in a respectful, constructive, and good-faith manner in all interactions with the University, faculty, staff, peers, and the broader community, including when providing feedback or raising concerns; to utilize official internal channels for such matters; and to refrain from conduct that seeks to exert pressure or prematurely escalate issues—including the use of social media—while internal resolution processes are ongoing. 5. To preserve and protect university property; act in ways that contribute to maintaining and promoting the Univeristy’s traditions and reputation. 6. To comply with the University’s regulations on initial and periodic health check-ups during the study program. 7. To fulfill all required payments, including tuition, health insurance, and other mandatory fees in accordance with University’s regulations to promptly repay any student loans or outstanding balances (if applicable); and to reimburse for any property damage or loss as stipulated in the [Student Financial Regulations and Tariffs](https://policy.vinuni.edu.vn/all-policies/financial-regulations-and-tariff-for-student-2/). 8. To participate in public service work, volunteer initiatives, and social activities for the community, appropriate to personal capability and health, as required by the University. 9. To update personal information in a timely manner on the student portal at the entrance, and during the study. 10. To support and protect the reputation and brand of VinUni, its Colleges, and affiliated academic or support units. 11. To comply with military service obligations in accordance with legal requirements (if applicable), and to complete the National Defense Education program as required for Vietnamese citizens. 12. To fulfill the post-graduation commitments if receiving a scholarship from VinUni, or other funding organizations according to pre-determined agreements (if any), or to repay the scholarship and other educational fees according to pre-determined regulations. 13. To prevent misconduct and dishonesty in academic and other student-related activities including ensuring research and academic integrity; and to self-report or report in a timely manner (within 48 hours upon awareness) to the authorized units when becoming aware of misconduct, dishonesty, or violations of laws, internal rules, and regulations. 14. To participate in maintaining safety, security, traffic safety, prevention against crimes, and social misconduct on and off campus. 15. To fulfill other related obligations according to existing laws and regulations of Government and VinUni. ### **2.3 Prohibited Acts for Students** 1. To engaging in any conduct—whether verbal, non-verbal, written, or physical—that insults, demeans, threatens, or otherwise infringes upon the dignity, honor, or personal safety of faculty members, administrators, staff, fellow students, or other individuals, including any form of physical assault. 2. To engage in any form of academic dishonesty, including but not limited to: cheating during tests or exams, bringing unauthorized materials into the exam room, grade manipulation; impersonating or asking someone else to study, to take exams, or to attend internships on one’s behalf; copying or outsourcing essays, projects, or theses; organizing or participating in proxy testing, engaging in research misconduct such as falsification, plagiarism, authorship or affiliation misrepresentation or any other act of academic fraud. 3. To represent, use, or reproduce the “VinUniversity/VinUni” name, logo, or affiliation in any publication (including research publications, scholarly outputs, or student-led journals and magazines), media, event, competition, or collaboration, or to make public statements or commitments on behalf of VinUniversity, without prior written approval from the University. 4. To create or manage online pages, groups, or communication materials bearing the VinUniversity/VinUni identity without official approval, or to post or share any content that may misrepresent or harm the reputation of the University. 5. To smoke, drink alcohol within university premises; attend class under the influence of alcohol. 6. To organize or participate in unlawful gatherings, protests, or petitions; engaging in social evils or activities that disturb public order and safety within or outside the university. 7. To organize or participate in illegal street racing or encourage such activities. 8. To organize or participate in gambling in any form. 9. To produce, trade, transport, distribute, store, use, or incite others to use weapons, explosives, drugs, banned pharmaceuticals or chemicals; possess or disseminate prohibited, pornographic, reactionary materials; promote superstition or religious activities within the university; and engaging in other unethical behaviors. 10. To establish or participate in illegal political activities; organize or join collective activities – such as meetings, campaigns, gatherings, demonstrations, or petitions under the University’s name without prior approval from the University leadership. 11. To post, comment on, or share content, images, or articles that are vulgar, violent, pornographic, or that violate national security, oppose the Party or the Government, distort the truth, defame, or insult the reputation of organizations or individuals on the internet. 12. To organize or engage in any other unlawful activities. ## **3. DISCIPLINABLE CONDUCT**Top of page ### **3.1 Forms of Disciplinary Actions** 3.1.1 Students who violate the Student Code of Conduct shall, depending on the nature, severity, frequency, and consequences of the misconduct, be subject to appropriate disciplinary measures. These may include verbal or written reminders, official warnings, or one of the following formal disciplinary actions: **Tier 1****Tier 2****Tier 3****Tier 4** **Expression of** **Disapproval****Warning****Temporary Suspension****Dismissal/ Expulsion** Applied to students who commit a first-time violation of a minor nature.Applied to students who have previously received a reprimand and committed a repeat violation, or who commit minor but frequent violations, or a relatively serious first-time violation Applied to students who, while under a warning, continue to violate regulations, or who commit serious violations of prohibited acts; also applied to students convicted under criminal law but granted a suspended sentence. Depending on the specific case, the University Leadership shall determine the suspension period based on academic regulations, with possible durations including: – Suspension for one semester – Suspension for one academic year – Suspension for the duration of the suspended sentence Applied to students who, while under temporary suspension, continue to violate regulations, or who commit a first-time violation of particularly serious nature, causing significant harm to the university or society; or who are sentenced to imprisonment without suspension 3.1.2 Disciplinary actions at the level of warning or higher must be recorded in the student’s official records and notified to the student’s family. In cases where a student is subject to temporary suspension or expulsion, the University will send a formal notice to the student’s family and local authorities for coordinated management and educational support. 3.1.3 International students are required to strictly comply with the Constitution, laws, and regulations of the Socialist Republic of Vietnam. In addition, they are expected to observe the laws of their home country, where applicable, and to fully respect all local rules and regulations in their area of residence. Any violation of these legal obligations may result in disciplinary action by the University and/or legal consequences in accordance with Vietnamese law. Types of Violations Subject to Disciplinary Actions: Refer to **Appendix 3**. ### **3.2 Procedure for Student Code of Conduct Incidents** For incidents categorized as **Tier 1 or Tier 2:** Student Affairs Management shall be responsible for reviewing the case, assessing the evidence, and determining the appropriate disciplinary action. For incidents of **Tier 3, Tier 4** severity, the Student Awarding and Disciplinary Committee shall convene a meeting to assess the case and propose disciplinary action to Provost for final approval. Any Committee member who has any personal interest or special information concerning a particular case should recuse themselves from that case. The Student Awarding and Disciplinary Committee shall consist of: * Chair: Vice Provost of Academic Administration * Vice Chair (Standing member): Head of Student Affairs Management * Committee Members: Representatives from relevant academic departments, administrative offices, the Ho Chi Minh Communist Youth Union, Student Council. * The Committee may also invite cohort representatives, program directors, or academic advisors to attend specific meetings. These individuals may provide input and propose recommendations regarding disciplinary actions but do not have voting rights in the final decision-making process. [Procedure for Student Code of Conduct Incidents](https://policy.vinuni.edu.vn/wp-content/uploads/2023/05/Appendix-IV.-Procedure-for-Student-Code-of-Conduct-Incidents.pdf) – Refer to Appendix**4**. ### **3.3 Mitigating Factors** Each of the points below may have an impact on the case outcomes and should be used by the Committee to assess the severity of a case: 1. Whether the student has committed misconduct before; 2. How far the student is into their academic program; 3. Whether there is evidence that the student committed the misconduct intentionally; 4. Whether the student had personal circumstances, such as physical health, mental health, etc., which affected their decision-making at the time. ### **3.4 Right to Appeal Disciplinary Decisions** If a student believes that a disciplinary decision is unjust or incorrect, they have the right to submit an appeal to the **Student Awarding and Disciplinary Committee.** The student must send a written appeal, including evidence, to[conduct@vinuni.edu.vn](mailto:conduct@vinuni.edu.vn), **within 10 working days**from the date of receiving the decision. The Student Awarding and Disciplinary Committee will reconsider the case. The Chair can decide to invite new members to join the reconsideration steps if necessary. ### **3.5. Termination of Disciplinary Decision** 1. For students who received an Expression of Disapproval: After 3 months from the date of the disciplinary decision, if there are no repeat or serious violations, the decision automatically expires, and the student’s full rights are restored. 2. For students who received a Warning: After 6 months, under the same conditions, the disciplinary decision also automatically expires, restoring full student rights. 3. For students temporarily suspended from study: Upon completion of the suspension period, the student must present a certification from the local authority confirming good conduct, and if applicable, a document confirming fulfillment of the suspended sentence. The university will review and reinstate the student if eligible. 4. The disciplinary decision must specify the effective duration, starting from the date of issuance to the end of the penalty period, in accordance with regulations. ### Appendix, Forms and Related documents [**Appendix 1. Student Standard Behaviors**](https://policy.vinuni.edu.vn/wp-content/uploads/2025/12/Appendix-I-Student-behaviours_ENG.pdf) [**Appendix 2. Disciplinary Procedures**](https://policy.vinuni.edu.vn/wp-content/uploads/2025/12/Appendix-II-Disciplinary-Procedures_ENG.pdf) [**Appendix 3. Type of Violations Subject to Disciplinary Action**](https://policy.vinuni.edu.vn/wp-content/uploads/2025/12/Appendix-III.-Type-of-Violations-Subject-to-Disciplinary-Action_ENVN.pdf) [**Appendix 4. Procedure for Student Code of Conduct Incidents & Forms**](https://policy.vinuni.edu.vn/wp-content/uploads/2025/12/Appendix-IV-Procedure-for-Student-Code-of-Conduct-Incidents-and-Forms_EN.pdf) **Forms and Related Documents** * [FRM01: Suspected Misconduct Report Form](https://policy.vinuni.edu.vn/wp-content/uploads/2023/05/Form-01_Suspended-Misconduct-Report-Form.pdf).[](http://policy.vinuni.edu.vn/all-policies/student-affairs-regulations-code-of-conduct/) * [FRM02: Student Misconduct Report Form](https://policy.vinuni.edu.vn/wp-content/uploads/2023/05/Form-02_Student-Misconduct-Report-Form.pdf). * [Sexual Misconduct and Response](https://policy.vinuni.edu.vn/all-policies/sexual-misconduct-and-response/) * [Research Integrity Policy](https://policy.vinuni.edu.vn/all-policies/research-integrity-policy/) * [Academic Integrity Policy](https://policy.vinuni.edu.vn/all-policies/student-academic-integrity/) ### Status and Details This document specifies rules and regulations that govern student affairs for programs of VinUniversity (VinUni), including: Rights and duties of students; student affairs governing structure; student affairs activities and services; student affairs assessment; student self-evaluation; rewards and disciplinary actions. #### Reference Number: VU_CTSV02.EN #### Document Type: Policy #### Issuing By: VinUniversity #### Issuing Date: Aug 05, 2026 #### Applying for: All VinUni staff, faculty and students #### Security Classification: Public ### Record of Changes
+Student Code of Conduct - VinUni Policy
+
+Skip to content
+
+Home
+
+Finding Policies
+
+What’s New
+
+Creating Policies
+
+Home
+
+Finding Policies
+
+Student Code of Conduct
+
+Policy Content
+
+Policy Status
+
+PDF version
+
+Student Code of Conduct
+
+TABLE OF CONTENTS
+
+For Vietnamese version, please access this
+
+link
+
+.
+
+1. PURPOSE
+
+1.1 Purpose
+
+The Student Code of Conduct outlines the standards of behavior expected from all VinUniversity students as members of a respectful, inclusive, and academically rigorous learning community. This Code aims to:
+
+Promote ethical behavior and a culture of mutual respect among students, faculty, staff, and the broader community;
+
+Define the rights and responsibilities of students as members of the University;
+
+Clearly outline prohibited conduct and associated disciplinary consequences;
+
+Guide students in making responsible decisions aligned with the values of VinUniversity;
+
+Serve as a foundation for maintaining a positive University reputation and contributing to the public good.
+
+The Code is both educational and regulatory in nature, designed to help students grow as responsible global citizens and future leaders.
+
+1.2 Scope
+
+This Student Code of Conduct applies to all individuals enrolled at VinUniversity, including:
+
+Undergraduate and graduate students
+
+Exchange, visiting, dual-degree, and transfer students
+
+Participants enrolled in non-degree, part-time, certificate, executive education, or other University-approved training programs.
+
+Unless otherwise specified, this Code applies to all learners participating in VinUniversity’s academic and training activities. Certain provisions relating to student services, governance, and academic administration apply only to the categories of learners for whom those provisions are relevant.
+
+The Code governs behavior in all contexts related to the University, including but not limited to:
+
+Activities on University premises (classrooms, labs, libraries, dormitory etc.)
+
+University-sponsored events and programs off-campus, including internships, fieldwork, and study abroad
+
+Digital platforms and online environments affiliated with the University (e.g., email, LMS, social media)
+
+Conduct that occurs off-campus but may adversely affect the University community, its reputation, or the safety and well-being of its members
+
+The Code is applicable throughout the student’s enrollment, including during breaks and periods between terms. All students are expected to comply with this Code and uphold the values of VinUniversity at all times, whether on or off campus.
+
+2. RIGHTS AND RESPONSIBILITIES OF STUDENTS
+
+2.1. Rights of Students
+
+Enrollment and Access
+
+To be officially enrolled in their admitted academic program and granted access to essential resources, including a student ID card and student portal account for academic and administrative purposes
+
+Respect and Transparency
+
+To be treated with dignity, fairness, and equality; to be fully informed of the academic policies, student life regulations, code of conduct, and other policies applicable to students at VinUniversity.
+
+Learning and Development Support
+
+To receive favorable conditions for academic learning, scientific research, and personal development, including:
+
+a) Access to library resources, learning facilities, laboratories, and equipment for academic, research, cultural, artistic, and sports activities;
+
+b) Opportunities to participate in scientific research, academic competitions, Olympiads, and innovation contests;
+
+c) Access to healthcare services as regulated by Vietnamese law and VinUniversity policies;
+
+d) Eligibility to apply for student exchange programs, international learning experiences, and graduate-level programs;
+
+e) Participation in legally recognized student organizations such as the Ho Chi Minh Communist Youth Union and the Vietnam Students’ Association, along with cultural, artistic, and sports activities aligned with the University’s mission;
+
+f) Access to student support services (e.g., career counseling, mental health services, special circumstances support);
+
+g) The right to request academic leave, deferment, acceleration, extension, transfer, or dual degrees, and to observe public holidays and semester breaks as prescribed.
+
+Scholarships and Social Benefits
+
+To be considered for scholarships and financial assistance per University and national regulations, including access to benefits such as public service discounts (transport, entertainment, cultural sites) as stipulated by the Government of Vietnam.
+
+Feedback and Representation
+
+To provide feedback and participate in quality assurance activities; to propose improvements directly or through legal representatives; and to file complaints or petitions to University leadership concerning legitimate rights and interests.
+
+Accommodation
+
+To be considered for on-campus or off-campus housing and to be prioritized based on applicable criteria and availability.
+
+Graduation Support
+
+Upon fulfilling graduation requirements, students have the right to receive their degree, transcript, and other academic documents, and to be supported in administrative processes related to graduation.
+
+2.2. Responsibilities of Students
+
+To fully comply with the general guidance of the laws of Vietnam, the regulations of VinUni, the home college(s), and other education supporting units.
+
+To study and practice according to the academic program and plan of VinUni; to fulfill the students’ duties according to VinUni’s Regulations and Guidelines; to be proactive in self-study, research, and maintain integrity, ethical values and personal conducts.
+
+To respect VinUni faculty members, administrators, and administrative staff, and other personnel on- and off-campus, to promote solidarity and mutual support among peers; and uphold cultural norms and values within the university environment.
+
+To communicate and conduct themselves in a respectful, constructive, and good-faith manner in all interactions with the University, faculty, staff, peers, and the broader community, including when providing feedback or raising concerns; to utilize official internal channels for such matters; and to refrain from conduct that seeks to exert pressure or prematurely escalate issues—including the use of social media—while internal resolution processes are ongoing.
+
+To preserve and protect university property; act in ways that contribute to maintaining and promoting the Univeristy’s traditions and reputation.
+
+To comply with the University’s regulations on initial and periodic health check-ups during the study program.
+
+To fulfill all required payments, including tuition, health insurance, and other mandatory fees in accordance with University’s regulations to promptly repay any student loans or outstanding balances (if applicable); and to reimburse for any property damage or loss as stipulated in the
+
+Student Financial Regulations and Tariffs
+
+.
+
+To participate in public service work, volunteer initiatives, and social activities for the community, appropriate to personal capability and health, as required by the University.
+
+To update personal information in a timely manner on the student portal at the entrance, and during the study.
+
+To support and protect the reputation and brand of VinUni, its Colleges, and affiliated academic or support units.
+
+To comply with military service obligations in accordance with legal requirements (if applicable), and to complete the National Defense Education program as required for Vietnamese citizens.
+
+To fulfill the post-graduation commitments if receiving a scholarship from VinUni, or other funding organizations according to pre-determined agreements (if any), or to repay the scholarship and other educational fees according to pre-determined regulations.
+
+To prevent misconduct and dishonesty in academic and other student-related activities including ensuring research and academic integrity; and to self-report or report in a timely manner (within 48 hours upon awareness) to the authorized units when becoming aware of misconduct, dishonesty, or violations of laws, internal rules, and regulations.
+
+To participate in maintaining safety, security, traffic safety, prevention against crimes, and social misconduct on and off campus.
+
+To fulfill other related obligations according to existing laws and regulations of Government and VinUni.
+
+2.3 Prohibited Acts for Students
+
+To engaging in any conduct—whether verbal, non-verbal, written, or physical—that insults, demeans, threatens, or otherwise infringes upon the dignity, honor, or personal safety of faculty members, administrators, staff, fellow students, or other individuals, including any form of physical assault.
+
+To engage in any form of academic dishonesty, including but not limited to: cheating during tests or exams, bringing unauthorized materials into the exam room, grade manipulation; impersonating or asking someone else to study, to take exams, or to attend internships on one’s behalf; copying or outsourcing essays, projects, or theses; organizing or participating in proxy testing, engaging in research misconduct such as falsification, plagiarism, authorship or affiliation misrepresentation or any other act of academic fraud.
+
+To represent, use, or reproduce the “VinUniversity/VinUni” name, logo, or affiliation in any publication (including research publications, scholarly outputs, or student-led journals and magazines), media, event, competition, or collaboration, or to make public statements or commitments on behalf of VinUniversity, without prior written approval from the University.
+
+To create or manage online pages, groups, or communication materials bearing the VinUniversity/VinUni identity without official approval, or to post or share any content that may misrepresent or harm the reputation of the University.
+
+To smoke, drink alcohol within university premises; attend class under the influence of alcohol.
+
+To organize or participate in unlawful gatherings, protests, or petitions; engaging in social evils or activities that disturb public order and safety within or outside the university.
+
+To organize or participate in illegal street racing or encourage such activities.
+
+To organize or participate in gambling in any form.
+
+To produce, trade, transport, distribute, store, use, or incite others to use weapons, explosives, drugs, banned pharmaceuticals or chemicals; possess or disseminate prohibited, pornographic, reactionary materials; promote superstition or religious activities within the university; and engaging in other unethical behaviors.
+
+To establish or participate in illegal political activities; organize or join collective activities – such as meetings, campaigns, gatherings, demonstrations, or petitions under the University’s name without prior approval from the University leadership.
+
+To post, comment on, or share content, images, or articles that are vulgar, violent, pornographic, or that violate national security, oppose the Party or the Government, distort the truth, defame, or insult the reputation of organizations or individuals on the internet.
+
+To organize or engage in any other unlawful activities.
+
+3. DISCIPLINABLE CONDUCT
+
+3.1 Forms of Disciplinary Actions
+
+3.1.1 Students who violate the Student Code of Conduct shall, depending on the nature, severity, frequency, and consequences of the misconduct, be subject to appropriate disciplinary measures. These may include verbal or written reminders, official warnings, or one of the following formal disciplinary actions:
+
+Tier 1
+
+Tier 2
+
+Tier 3
+
+Tier 4
+
+Expression of
+
+Disapproval
+
+Warning
+
+Temporary Suspension
+
+Dismissal/ Expulsion
+
+Applied to students who commit a first-time violation of a minor nature.
+
+Applied to students who have previously received a reprimand and committed a repeat violation, or who commit minor but frequent violations, or a relatively serious first-time violation
+
+Applied to students who, while under a warning, continue to violate regulations, or who commit serious violations of prohibited acts; also applied to students convicted under criminal law but granted a suspended sentence.
+
+Depending on the specific case, the University Leadership shall determine the suspension period based on academic regulations, with possible durations including:
+
+– Suspension for one semester
+
+– Suspension for one academic year
+
+– Suspension for the duration of the suspended sentence
+
+Applied to students who, while under temporary suspension, continue to violate regulations, or who commit a first-time violation of particularly serious nature, causing significant harm to the university or society; or who are sentenced to imprisonment without suspension
+
+3.1.2 Disciplinary actions at the level of warning or higher must be recorded in the student’s official records and notified to the student’s family. In cases where a student is subject to temporary suspension or expulsion, the University will send a formal notice to the student’s family and local authorities for coordinated management and educational support.
+
+3.1.3 International students are required to strictly comply with the Constitution, laws, and regulations of the Socialist Republic of Vietnam. In addition, they are expected to observe the laws of their home country, where applicable, and to fully respect all local rules and regulations in their area of residence. Any violation of these legal obligations may result in disciplinary action by the University and/or legal consequences in accordance with Vietnamese law.
+
+Types of Violations Subject to Disciplinary Actions: Refer to
+
+Appendix 3
+
+.
+
+3.2 Procedure for Student Code of Conduct Incidents
+
+For incidents categorized as
+
+Tier 1 or Tier 2:
+
+Student Affairs Management shall be responsible for reviewing the case, assessing the evidence, and determining the appropriate disciplinary action.
+
+For incidents of
+
+Tier 3, Tier 4
+
+severity, the Student Awarding and Disciplinary Committee shall convene a meeting to assess the case and propose disciplinary action to Provost for final approval. Any Committee member who has any personal interest or special information concerning a particular case should recuse themselves from that case.
+
+The Student Awarding and Disciplinary Committee shall consist of:
+
+Chair: Vice Provost of Academic Administration
+
+Vice Chair (Standing member): Head of Student Affairs Management
+
+Committee Members: Representatives from relevant academic departments, administrative offices, the Ho Chi Minh Communist Youth Union, Student Council.
+
+The Committee may also invite cohort representatives, program directors, or academic advisors to attend specific meetings. These individuals may provide input and propose recommendations regarding disciplinary actions but do not have voting rights in the final decision-making process.
+
+Procedure for Student Code of Conduct Incidents
+
+– Refer to Appendix
+
+4
+
+.
+
+3.3 Mitigating Factors
+
+Each of the points below may have an impact on the case outcomes and should be used by the Committee to assess the severity of a case:
+
+Whether the student has committed misconduct before;
+
+How far the student is into their academic program;
+
+Whether there is evidence that the student committed the misconduct intentionally;
+
+Whether the student had personal circumstances, such as physical health, mental health, etc., which affected their decision-making at the time.
+
+3.4 Right to Appeal Disciplinary Decisions
+
+If a student believes that a disciplinary decision is unjust or incorrect, they have the right to submit an appeal to the
+
+Student Awarding and Disciplinary Committee.
+
+The student must send a written appeal, including evidence, to
+
+[email protected]
+
+,
+
+within 10 working days
+
+from the date of receiving the decision.
+
+The Student Awarding and Disciplinary Committee will reconsider the case. The Chair can decide to invite new members to join the reconsideration steps if necessary.
+
+3.5. Termination of Disciplinary Decision
+
+For students who received an Expression of Disapproval: After 3 months from the date of the disciplinary decision, if there are no repeat or serious violations, the decision automatically expires, and the student’s full rights are restored.
+
+For students who received a Warning: After 6 months, under the same conditions, the disciplinary decision also automatically expires, restoring full student rights.
+
+For students temporarily suspended from study: Upon completion of the suspension period, the student must present a certification from the local authority confirming good conduct, and if applicable, a document confirming fulfillment of the suspended sentence. The university will review and reinstate the student if eligible.
+
+The disciplinary decision must specify the effective duration, starting from the date of issuance to the end of the penalty period, in accordance with regulations.
+
+Appendix, Forms and Related documents
+
+Appendix 1. Student Standard Behaviors
+
+Appendix 2. Disciplinary Procedures
+
+Appendix 3. Type of Violations Subject to Disciplinary Action
+
+Appendix 4. Procedure for Student Code of Conduct Incidents & Forms
+
+Forms and Related Documents
+
+FRM01: Suspected Misconduct Report Form
+
+.
+
+FRM02: Student Misconduct Report Form
+
+.
+
+Sexual Misconduct and Response
+
+Research Integrity Policy
+
+Academic Integrity Policy
+
+Status and Details
+
+This document specifies rules and regulations that govern student affairs for programs of VinUniversity (VinUni), including: Rights and duties of students; student affairs governing structure; student affairs activities and services; student affairs assessment; student self-evaluation; rewards and disciplinary actions.
+
+Reference Number:
+
+VU_CTSV02.EN
+
+Document Type:
+
+Policy
+
+Issuing By:
+
+VinUniversity
+
+Issuing Date:
+
+Aug 05, 2026
+
+Applying for:
+
+All VinUni staff, faculty and students
+
+Security Classification:
+
+Public
+
+Record of Changes
+
+Revision
+
+Date
+
+Author / Editor
+
+Description
+
+V1.0
+
+Nov 20, 2020
+
+Prepared by: Office of Student Affairs Management
+
+Reviewed by: Student Affairs Commitee
+
+Approved by: Provost
+
+First released
+
+V2.0
+
+Feb 20, 2023
+
+Prepared by: Office of Student Affairs Management
+
+Reviewed by: Student Affairs Commitee
+
+Approved by: Provost
+
+Second released, change formatting, merge with other documents
+
+V3.0
+
+Jun 30, 2025
+
+Prepared by: Office of Student Affairs Management
+
+Reviewed by: Student Affairs Committee
+
+Approved by: Provost
+
+Third released, revised content, streamlined format, and integrated updates.
+
+V4.0
+
+Oct 31, 2025
+
+Prepared by: Office of Student Affairs
+
+Management
+
+Reviewed by: Vice Provost of Academic
+
+Administration
+
+Approved by: Provost
+
+Update 2.2 Responsibilities of students; 2.3 Prohibited acts for students; Appendix 3
+
+V5.0
+
+Dec 24, 2025
+
+Prepared by: Office of Student Affairs Management
+
+Reviewed by: Vice Provost of Academic Administration
+
+Approved by: Provost
+
+Update 2.2 and 2.3 (clarify expectations for respectful communication and use of internal channels).
+
+V6.0
+
+Aug 05, 2026
+
+Prepared by: Office of Student Affairs Management
+
+Reviewed by: Vice Provost of Academic Administration
+
+Approved by: Provost
+
+Update 1.2 (to clarify the scope of application of this Code of Conduct)
+
+PDF version
+
+You can download this document here:
+
+Student Code of Conduct
+
+Copyright © 2019 VinUni. All Right Reserved. Privacy Policy

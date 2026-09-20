@@ -13,74 +13,42 @@ crawl_timestamp: "2026-09-20T07:40:00+00:00"
 
 # Student Code of Conduct
 
-1
-
-
 STUDENT CODE OF CONDUCT
-Reference number  : VU_CTSV02.EN
+Reference number : VU_CTSV02.EN
 Issuing by : VinUniversity
-Issuing date  : 24/12/2025
+Issuing date : 24/12/2025
 Access level : All VinUni staff, faculty and students
-
-
-
-
-
-
 Records of changes
-
-Version Published
-Date
-Effective
-Date
-Approved by Description of changes
-1.0 20/11/2020 20/11/2020
+Version Published Effective Approved by Description of changes
+Date Date
 Prepared by: Office of Student Affairs
 Management
+1.0 20/11/2020 20/11/2020 First released
 Reviewed by: Student Affairs Committee
 Approved by: Provost
-First released
-2.0 20/02/2023 20/02/2023
 Prepared by: Office of Student Affairs
-Management
-Reviewed by: Student Affairs Committee
-Approved by: Provost
 Second released, change
-formatting, merge with
-other documents
-3.0 28/06/2025 24/06/2025
-Prepared by: Office of Student Affairs
 Management
+2.0 20/02/2023 20/02/2023 formatting, merge with
 Reviewed by: Student Affairs Committee
+other documents
 Approved by: Provost
-Third released, revised
-content, streamlined
-format, and integrated
-updates.
-4.0 31/10/2025 31/10/2025
-Prepared by: Office of Student Affairs
-Management
-Reviewed by: Vice Provost of Academic
-Administration
-Approved by: Provost
-Update 2.2
-Responsibilities of
-students; 2.3 Prohibited
-acts for students;
-Appendix 3.
-5.0 24/12/2025 24/12/2025
-Prepared by: Office of Student Affairs
-Management
-Reviewed by: Vice Provost of Academic
-Administration
-Approved by: Provost
-Update 2.2 and 2.3
-(clarify expectations for
-respectful
-communication and use
-of internal channels).
-
-2
+Prepared by: Office of Student Affairs Third released, revised
+Management content, streamlined
+3.0 28/06/2025 24/06/2025
+Reviewed by: Student Affairs Committee format, and integrated
+Approved by: Provost updates.
+Prepared by: Office of Student Affairs Update 2.2
+Management Responsibilities of
+4.0 31/10/2025 31/10/2025 Reviewed by: Vice Provost of Academic students; 2.3 Prohibited
+Administration acts for students;
+Approved by: Provost Appendix 3.
+Prepared by: Office of Student Affairs Update 2.2 and 2.3
+Management (clarify expectations for
+5.0 24/12/2025 24/12/2025 Reviewed by: Vice Provost of Academic respectful
+Administration communication and use
+Approved by: Provost of internal channels).
+1
 
 CONTENTS
 1. PURPOSE AND SCOPE ...................................................................................................... 3
@@ -99,21 +67,7 @@ Appendix 2. Disciplinary Procedures ............................................
 Appendix 3. Type of Violations Subject to Disciplinary Action ............................................ 9
 Appendix 4. Procedure for Student Code of Conduct Incidents & Forms .......................... 9
 Forms and Related Documents ................................................................................................ 9
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-3
+2
 
 1. PURPOSE AND SCOPE
 1.1 Purpose
@@ -144,28 +98,19 @@ reputation, or the safety and well-being of its members
 The Code is applicable throughout the student’s enrollment, including during breaks and periods
 between terms. All students are expected to comply with this Code and uphold the values of
 VinUniversity at all times, whether on or off campus.
-
-
-4
+3
 
 2. RIGHTS AND RESPONSIBILITIES OF STUDENTS
 2.1. Rights of Students
-Enrollment and
-Access
-To be officially enrolled in their admitted academic program and granted
-access to essential resources, including a student ID card and student portal
+Enrollment and To be officially enrolled in their admitted academic program and granted
+Access access to essential resources, including a student ID card and student portal
 account for academic and administrative purposes
-Respect and
-Transparency
-To be treated with dignity, fairness, and equality; to be fully informed of the
-academic policies, student life regulations, code of conduct, and other policies
+Respect and To be treated with dignity, fairness, and equality; to be fully informed of the
+Transparency academic policies, student life regulations, code of conduct, and other policies
 applicable to students at VinUniversity.
-Learning and
-Development
-Support
-To receive favorable conditions for academic learning, scientific research, and
-personal development, including:
-a) Access to library resources, learning facilities, laboratories, and equipment
+Learning and To receive favorable conditions for academic learning, scientific research, and
+Development personal development, including:
+Support a) Access to library resources, learning facilities, laboratories, and equipment
 for academic, research, cultural, artistic, and sports activities;
 b) Opportunities to participate in scientific research, academic competitions,
 Olympiads, and innovation contests;
@@ -182,64 +127,56 @@ services, special circumstances support);
 g) The right to request academic leave, deferment, acceleration, extension,
 transfer, or dual degrees, and to observe public holidays and semester breaks
 as prescribed.
-Scholarships and
-Social Benefits
-To be considered for scholarships and financial assistance per University and
-national regulations, including access to benefits such as public service
+Scholarships and To be considered for scholarships and financial assistance per University and
+Social Benefits national regulations, including access to benefits such as public service
 discounts (transport, entertainment, cultural sites) as stipulated by the
 Government of Vietnam.
-Feedback and
-Representation
-To provide feedback and participate in quality assurance activities; to propose
-improvements directly or through legal representatives; and to file complaints
+Feedback and To provide feedback and participate in quality assurance activities; to propose
+Representation improvements directly or through legal representatives; and to file complaints
 or petitions to University leadership concerning legitimate rights and interests.
 Accommodation To be considered for on-campus or off-campus housing and to be prioritized
 based on applicable criteria and availability.
-Graduation
-Support
-Upon fulfilling graduation requirements, students have the right to receive
-their degree, transcript, and other academic documents, and to be supported in
+Graduation Upon fulfilling graduation requirements, students have the right to receive
+Support their degree, transcript, and other academic documents, and to be supported in
 administrative processes related to graduation.
-
 2.2. Responsibilities of Students
 a) To fully comply with the general guidance of the laws of Vietnam, the regulations of
 VinUni, the home college(s), and other education supporting units.
-
-5
+4
 
 b) To study and practice according to the academic program and plan of VinUni; to fulfill the
 students’ duties according to VinUni’s Regulations and Guidelines; to be proactive in self-
 study, research, and maintain integrity, ethical values and personal conducts.
-c) To respect VinUni faculty members,  administrators, and administrative staff, and other
+c) To respect VinUni faculty members, administrators, and administrative staff, and other
 personnel on- and off-campus, to promote solidarity and mutual support among peers; and
 uphold cultural norms and values within the university environment.
-d) To communicate and conduct themselves in a respectful, constructive, and good -faith
+d) To communicate and conduct themselves in a respectful, constructive, and good-faith
 manner in all interactions with the University, faculty, staff, peers, and the broader
 community, including when providing feedback or raising concerns; to utilize official
 internal channels for such matters; and to refrain from conduct that seeks to exert pressure
-or prematurely escalate issues —including the use of social media —while internal
+or prematurely escalate issues—including the use of social media—while internal
 resolution processes are ongoing.
 e) To preserve and protect university property; act in ways that contribute to maintaining and
 promoting the Univeristy’s traditions and reputation.
 f) To comply with the University’s regulations on initial and periodic health check-ups during
 the study program.
 g) To fulfill all required payments, including tuition, health insurance, and other mandatory
-fees in accordance with  University’s regulations to promptly repay any student loans or
+fees in accordance with University’s regulations to promptly repay any student loans or
 outstanding balances (if applicable); and to reimburse for any property damage or loss as
 stipulated in the Student Financial Regulations and Tariffs.
 h) To participate in public service work, volunteer initiatives, and social activities for the
 community, appropriate to personal capability and health, as required by the University.
 i) To update personal information in a timely manner on the student portal at the entrance,
 and during the study.
-j) To support and protect the  reputation and brand of VinUni, its Colleges, and affiliated
+j) To support and protect the reputation and brand of VinUni, its Colleges, and affiliated
 academic or support units.
 k) To comply with military service obligations in accordance with legal requirements (if
 applicable), and to complete the National Defense Education program as required for
 Vietnamese citizens.
 l) To fulfill the post-graduation commitments if receiving a scholarship from VinUni, or other
-funding organizations according to pre -determined agreements (if any), or to repay the
+funding organizations according to pre-determined agreements (if any), or to repay the
 scholarship and other educational fees according to pre-determined regulations.
-m) To prevent misconduct and dishonesty in academic and other student -related activities
+m) To prevent misconduct and dishonesty in academic and other student-related activities
 including ensuring research and academic integrity; and to self-report or report in a timely
 manner (within 48 hours upon awareness) to the authorized units when becoming aware of
 misconduct, dishonesty, or violations of laws, internal rules, and regulations.
@@ -247,19 +184,18 @@ n) To participate in maintaining safety, security, traffic safety, prevention ag
 social misconduct on and off campus.
 o) To fulfill other related obligations according to existing laws and regulations of
 Government and VinUni.
- 2.3 Prohibited Acts for Students
-a) To engaging in any conduct —whether verbal, non -verbal, written, or physical —that
+2.3 Prohibited Acts for Students
+a) To engaging in any conduct—whether verbal, non-verbal, written, or physical—that
 insults, demeans, threatens, or otherwise infringes upon the dignity, honor, or personal
-
-6
+5
 
 safety of faculty members, administrators, staff, fellow students, or other individuals,
 including any form of physical assault.
-b) To engage  in any form of  academic dishonesty, including but not limited to: cheating
+b) To engage in any form of academic dishonesty, including but not limited to: cheating
 during tests or exams, bringing unauthorized materials into the exam room, grade
 manipulation; impersonating or asking someone else to study, to take exams, or to attend
 internships on one’s behalf; copying or outsourcing essays, projects, or theses; organizing
-or participating in proxy testing , engaging in research misconduct  such as  falsification,
+or participating in proxy testing, engaging in research misconduct such as falsification,
 plagiarism, authorship or affiliation misrepresentation or any other act of academic fraud.
 c) To represent, use, or reproduce the “VinUniversity/VinUni” name, logo, or affiliation in
 any publication (including research publications, scholarly outputs, or student-led journals
@@ -275,14 +211,14 @@ f) To organize or participate in unlawful gatherings, protests, or petitions; en
 evils or activities that disturb public order and safety within or outside the university.
 g) To organize or participate in illegal street racing or encourage such activities.
 h) To organize or participate in gambling in any form.
-i) To p roduce, trad e, transport, distribut e, stor e, us e, or incit e others to use weapons,
-explosives, drugs, banned pharmaceuticals or chemicals; possess or disseminat e
+i) To produce, trade, transport, distribute, store, use, or incite others to use weapons,
+explosives, drugs, banned pharmaceuticals or chemicals; possess or disseminate
 prohibited, pornographic, reactionary materials; promote superstition or religious activities
 within the university; and engaging in other unethical behaviors.
 j) To establish or participate in illegal political activities; organize or join collective activities
 – such as meetings, campaigns, gatherings, demonstrations, or petitions under the
 University’s name without prior approval from the University leadership.
-k) To p ost, comment on, or shar e content, images, or articles that are vulgar, violent,
+k) To post, comment on, or share content, images, or articles that are vulgar, violent,
 pornographic, or that violate national security, oppose the Party or the Government, distort
 the truth, defame, or insult the reputation of organizations or individuals on the internet.
 l) To organize or engage in any other unlawful activities.
@@ -290,50 +226,31 @@ l) To organize or engage in any other unlawful activities.
 3.1 Forms of Disciplinary Actions
 3.1.1 Students who violate the Student Code of Conduct shall, depending on the nature, severity,
 frequency, and consequences of the misconduct, be subject to appropriate disciplinary measures.
-These may include verbal or written reminders, official warning s, or one of the following formal
+These may include verbal or written reminders, official warnings, or one of the following formal
 disciplinary actions:
+6
 
-
-
-7
-
-Tier 1 Tier 2 Tier 3 Tier 4
-Expression of
-Disapproval
-Warning Temporary
-Suspension
-Dismissal/
-Expulsion
-Applied to students
-who commit a first-
-time violation of a
-minor nature.
-Applied to students
-who have previously
-received a reprimand
-and committed a
-repeat violation, or
-who commit minor
-but frequent
-violations, or a
-relatively serious
-first-time violation
-Applied to students
-who, while under a
-warning, continue to
-violate regulations, or
-who commit serious
-violations of
-prohibited acts; also
-applied to students
-convicted under
-criminal law but
-granted a suspended
-sentence.
-Depending on the
-specific case, the
-University Leadership
-shall determine the
+| Tier 1          | Tier 2   | Tier 3      | Tier 4      |
+| --------------- | -------- | ----------- | ----------- |
+| Expression of   | Warning  | Temporary   | Dismissal/  |
+| Disapproval     |          | Suspension  | Expulsion   |
+Applied to students  Applied to students  Applied to students  Applied to students
+who commit a first- who have previously  who, while under a  who, while under
+time violation of a  received a reprimand  warning, continue to  temporary
+minor nature.  and committed a  violate regulations, or  suspension,
+|     | repeat violation, or  | who commit serious     | continue to violate   |
+| --- | --------------------- | ---------------------- | --------------------- |
+|     | who commit minor      | violations of          | regulations, or who   |
+|     | but frequent          | prohibited acts; also  | commit a first-time   |
+|     | violations, or a      | applied to students    | violation of          |
+|     | relatively serious    | convicted under        | particularly serious  |
+|     | first-time violation  | criminal law but       | nature, causing       |
+|     |                       | granted a suspended    | significant harm to   |
+|     |                       | sentence.              | the university or     |
+|     |                       | Depending on the       | society; or who are   |
+|     |                       | specific case, the     | sentenced to          |
+|     |                       | University Leadership  | imprisonment          |
+|     |                       | shall determine the    | without suspension    |
 suspension period
 based on academic
 regulations, with
@@ -346,22 +263,6 @@ academic year
 – Suspension for the
 duration of the
 suspended sentence
-Applied to students
-who, while under
-temporary
-suspension,
-continue to violate
-regulations, or who
-commit a first-time
-violation of
-particularly serious
-nature, causing
-significant harm to
-the university or
-society; or who are
-sentenced to
-imprisonment
-without suspension
 3.1.2 Disciplinary actions at the level of warning or higher must be recorded in the student's
 official records and notified to the student’s family. In cases where a student is subject to
 temporary suspension or expulsion, the University will send a formal notice to the student’s
@@ -373,8 +274,7 @@ laws of their home country, where applicable, and to fully respect all local rul
 in their area of residence. Any violation of these legal obligations may result in disciplinary
 action by the University and/or legal consequences in accordance with Vietnamese law.
 Types of Violations Subject to Disciplinary Actions: Refer to Appendix 3.
-
-8
+7
 
 3.2 Procedure for Student Code of Conduct Incidents
 For incidents categorized as Tier 1 or Tier 2: Student Affairs Management shall be responsible
@@ -407,8 +307,7 @@ If a student believes that a disciplinary decision is unjust or incorrect, they 
 submit an appeal to the Student Awarding and Disciplinary Committee.
 The student must send a written appeal, including evidence, to conduct@vinuni.edu.vn, within
 10 working days from the date of receiving the decision.
-
-9
+8
 
 The Student Awarding and Disciplinary Committee will reconsider the case. The Chair can
 decide to invite new members to join the reconsideration steps if necessary.
@@ -419,7 +318,7 @@ automatically expires, and the student’s full rights are restored.
 b) For students who received a Warning: After 6 months, under the same conditions, the
 disciplinary decision also automatically expires, restoring full student rights.
 c) For students temporarily suspended from study: Upon completion of the suspension period,
-the student must present a certification from the local authority  confirming good conduct,
+the student must present a certification from the local authority confirming good conduct,
 and if applicable, a document confirming fulfillment of the suspended sentence. The
 university will review and reinstate the student if eligible.
 d) The disciplinary decision must specify the effective duration, starting from the date of
@@ -428,8 +327,8 @@ Appendix 1. Student Standard Behaviors
 Appendix 2. Disciplinary Procedures
 Appendix 3. Type of Violations Subject to Disciplinary Action
 Appendix 4. Procedure for Student Code of Conduct Incidents & Forms
-
 Forms and Related Documents
 • FRM01: Suspected Misconduct Report Form.
 • FRM02: Student Misconduct Report Form.
 • Sexual Misconduct and Response
+9
