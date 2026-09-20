@@ -25,6 +25,8 @@ class Settings:
     use_jina_reranking: bool = False
 
     def __post_init__(self) -> None:
+        if self.openai_model != "gpt-5.6-luna":
+            raise ValueError("openai_model must be gpt-5.6-luna")
         if not self.embedding_model.strip():
             raise ValueError("embedding_model must be non-empty")
         if self.embedding_dimension <= 0:
@@ -49,7 +51,7 @@ class Settings:
             return value.strip().lower() in {"1", "true", "yes", "on"}
 
         return cls(
-            openai_model=os.getenv("LLM_MODEL") or os.getenv("OPENAI_MODEL") or cls.openai_model,
+            openai_model=cls.openai_model,
             embedding_model=os.getenv("EMBEDDING_MODEL") or cls.embedding_model,
             collection_name=os.getenv("CHROMA_COLLECTION") or cls.collection_name,
             default_top_k=int(os.getenv("TOP_K", cls.default_top_k.__str__())),

@@ -56,9 +56,7 @@ def _route(query: str) -> Literal["admissions", "student_life"]:
 
 def _matches_mode(chunk: SearchResult, mode: str) -> bool:
     chunk_mode = str(chunk.get("metadata", {}).get("mode", "")).casefold()
-    # Older snapshots may not carry routing metadata.  Keep those results
-    # rather than silently turning an otherwise answerable request into a refusal.
-    return not chunk_mode or chunk_mode == mode
+    return chunk_mode == mode
 
 
 def _context(chunks: list[SearchResult]) -> str:
@@ -72,13 +70,6 @@ def _context(chunks: list[SearchResult]) -> str:
             provenance.append(f"Effective: {meta['effective_date']}")
         parts.append(f"[Source {index} | {' | '.join(provenance)}]\n{chunk['content']}")
     return "\n\n---\n\n".join(parts)
-
-
-def _reorder(chunks: list[SearchResult]) -> list[SearchResult]:
-    """Keep the best chunk at both a prominent and stable context position."""
-    if len(chunks) < 3:
-        return list(chunks)
-    return list(chunks[::2]) + list(reversed(chunks[1::2]))
 
 
 def _references(chunks: list[SearchResult], language: str) -> str:
@@ -99,8 +90,11 @@ def _references(chunks: list[SearchResult], language: str) -> str:
 def _cite(answer: str, source_count: int) -> str:
     """Make a provider response portable even when it omitted required cites."""
     body = answer.strip()
-    if not body:
-        return body
+    if not body or source_count <= 0:
+        return ""
+    citations = [int(value) for value in re.findall(r"\[(\d+)\]", body)]
+    if any(value < 1 or value > source_count for value in citations):
+        return ""
     # A citation anywhere in a sentence is sufficient for short generated answers;
     # split conservatively to avoid disrupting Vietnamese abbreviations.
     sentences = re.split(r"(?<=[.!?])\s+", body)
@@ -108,50 +102,128 @@ def _cite(answer: str, source_count: int) -> str:
     return " ".join(cited)
 
 
+def _has_conflicting_versions(chunks: list[SearchResult]) -> bool:
+    versions_by_title: dict[str, set[tuple[str, str]]] = {}
+    for chunk in chunks:
+        metadata = chunk["metadata"]
+        title = str(metadata.get("title", "")).casefold()
+        version = str(metadata.get("policy_version") or "")
+        effective = str(metadata.get("effective_date") or "")
+        if version or effective:
+            versions_by_title.setdefault(title, set()).add((version, effective))
+    return any(len(versions) > 1 for versions in versions_by_title.values())
+
+
+def _supports_requested_year(query: str, chunks: list[SearchResult]) -> bool:
+    years = set(re.findall(r"\b20\d{2}\b", query))
+    if not years:
+        return True
+    evidence = " ".join(
+        f"{chunk['content']} {chunk['metadata'].get('policy_version', '')} "
+        f"{chunk['metadata'].get('effective_date', '')}"
+        for chunk in chunks
+    )
+    return bool(years.intersection(re.findall(r"\b20\d{2}\b", evidence)))
+
+
 class DefaultCompassAssistant:
-    def __init__(self, retrieval: RetrievalEngine, generation: GenerationPort | None = None, *, score_threshold: float = 0.3) -> None:
+    def __init__(self, retrieval: RetrievalEngine, generation: GenerationPort | None = None) -> None:
         self.retrieval = retrieval
         self.generation = generation or DeterministicGenerationAdapter()
-        self.score_threshold = score_threshold
 
-    def answer(self, request: ChatRequest) -> GenerationResult:
+    @staticmethod
+    def _result(answer: str, chunks: list[SearchResult], status: str) -> GenerationResult:
+        source = DefaultCompassAssistant._source(chunks) if chunks else "none"
+        return {"answer": answer, "sources": chunks, "retrieval_source": source, "evidence_status": status}
+
+    def _prepare(self, request: ChatRequest) -> tuple[str, str, list[SearchResult], str, str, str]:
         language = _language(request)
         refusal = REFUSAL_VI if language == "vi" else REFUSAL_EN
-        if not request.query.strip() or request.top_k <= 0 or PII_PATTERN.search(request.query):
-            return {"answer": refusal, "sources": [], "retrieval_source": "none", "evidence_status": "not_found"}
         mode = _route(request.query) if request.mode == "auto" else request.mode
-        try:
-            retrieved = self.retrieval.retrieve(request.query, mode=mode, top_k=request.top_k)
-        except Exception:
-            return {"answer": refusal, "sources": [], "retrieval_source": "none", "evidence_status": "not_found"}
-        chunks = _reorder([item for item in retrieved if _matches_mode(item, mode)])
-        if not chunks:
-            return {"answer": refusal, "sources": [], "retrieval_source": "none", "evidence_status": "not_found"}
+        if not request.query.strip() or request.top_k <= 0 or PII_PATTERN.search(request.query):
+            return language, refusal, [], mode, "", ""
+        retrieved = self.retrieval.retrieve(request.query, mode=mode, top_k=request.top_k)
+        chunks = [item for item in retrieved if _matches_mode(item, mode)]
+        if not chunks or not _supports_requested_year(request.query, chunks):
+            return language, refusal, [], mode, "", ""
         history = request.history[-4:]
-        history_text = "\n".join(f"{message.role}: {message.content}" for message in history if not PII_PATTERN.search(message.content))
+        history_text = "\n".join(
+            f"{message.role}: {message.content}"
+            for message in history
+            if not PII_PATTERN.search(message.content)
+        )
+        conflict_instruction = (
+            "The sources contain conflicting policy versions. Explicitly qualify the answer and describe the conflict. "
+            if _has_conflicting_versions(chunks)
+            else ""
+        )
         system = (
             "You are VinUni Compass using GPT-5.6 Luna. Answer only from the supplied public sources. "
             "Preserve official policy names and defined English terms. Cite every material claim inline as [n]. "
             "Do not adjudicate personal records; do not request or repeat personal information. "
-            f"Answer in {'Vietnamese' if language == 'vi' else 'English'}."
+            f"{conflict_instruction}Answer in {'Vietnamese' if language == 'vi' else 'English'}."
         )
-        user = f"Mode: {mode}\nContext:\n{_context(chunks)}\n\nRecent session context (optional):\n{history_text}\n\nQuestion: {request.query}"
+        user = (
+            f"Mode: {mode}\nContext:\n{_context(chunks)}\n\n"
+            f"Recent session context (optional):\n{history_text}\n\nQuestion: {request.query}"
+        )
+        status = "partial_evidence" if _has_conflicting_versions(chunks) else "supported"
+        return language, refusal, chunks, mode, system, user + f"\n\nEvidence status: {status}"
+
+    def answer(self, request: ChatRequest) -> GenerationResult:
+        try:
+            language, refusal, chunks, _, system, user = self._prepare(request)
+        except Exception:
+            language = _language(request)
+            refusal = REFUSAL_VI if language == "vi" else REFUSAL_EN
+            return self._result(refusal, [], "not_found")
+        if not chunks:
+            return self._result(refusal, [], "not_found")
         try:
             generated = self.generation.complete(system, user)
         except Exception:
-            return {"answer": refusal, "sources": chunks, "retrieval_source": self._source(chunks), "evidence_status": "partial_evidence"}
+            return self._result(refusal, chunks, "partial_evidence")
         answer = _cite(generated, len(chunks))
         if not answer:
-            return {"answer": refusal, "sources": chunks, "retrieval_source": self._source(chunks), "evidence_status": "partial_evidence"}
-        return {"answer": answer + _references(chunks, language), "sources": chunks, "retrieval_source": self._source(chunks), "evidence_status": "supported"}
+            return self._result(refusal, chunks, "partial_evidence")
+        status = "partial_evidence" if _has_conflicting_versions(chunks) else "supported"
+        return self._result(answer + _references(chunks, language), chunks, status)
 
     @staticmethod
     def _source(chunks: list[SearchResult]) -> str:
         return "pageindex" if chunks and chunks[0].get("retrieval_method") == "pageindex" else "hybrid"
 
     def stream(self, request: ChatRequest) -> Iterable[StreamEvent]:
-        result = self.answer(request)
-        yield StreamEvent(type="metadata", metadata={"evidence_status": result.get("evidence_status", "not_found")})
-        yield StreamEvent(type="delta", data=result["answer"])
-        yield StreamEvent(type="sources", metadata={"sources": result["sources"], "retrieval_source": result["retrieval_source"], "evidence_status": result.get("evidence_status", "not_found")})
+        try:
+            language, refusal, chunks, _, system, user = self._prepare(request)
+        except Exception:
+            yield StreamEvent(type="error", data="Unable to retrieve public evidence.")
+            yield StreamEvent(type="done")
+            return
+        if not chunks:
+            yield StreamEvent(type="metadata", metadata={"evidence_status": "not_found"})
+            yield StreamEvent(type="delta", data=refusal)
+            yield StreamEvent(type="sources", metadata={"sources": [], "retrieval_source": "none", "evidence_status": "not_found"})
+            yield StreamEvent(type="done")
+            return
+        status = "partial_evidence" if _has_conflicting_versions(chunks) else "supported"
+        yield StreamEvent(type="metadata", metadata={"evidence_status": status})
+        generated = ""
+        try:
+            for delta in self.generation.stream(system, user):
+                if delta:
+                    generated += delta
+                    yield StreamEvent(type="delta", data=delta)
+        except Exception:
+            yield StreamEvent(type="error", data="The answer provider is temporarily unavailable.")
+            yield StreamEvent(type="done")
+            return
+        validated = _cite(generated, len(chunks))
+        if not validated or validated != generated.strip():
+            yield StreamEvent(type="error", data="The generated citations could not be verified.")
+            yield StreamEvent(type="done")
+            return
+        references = _references(chunks, language)
+        yield StreamEvent(type="delta", data=references)
+        yield StreamEvent(type="sources", metadata={"sources": chunks, "retrieval_source": self._source(chunks), "evidence_status": status})
         yield StreamEvent(type="done")

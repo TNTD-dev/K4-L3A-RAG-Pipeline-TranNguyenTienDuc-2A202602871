@@ -62,5 +62,4 @@ def build_assistant(settings: Settings | None = None) -> CompassAssistant:
     return DefaultCompassAssistant(
         retrieval,
         generation,
-        score_threshold=settings.score_threshold,
     )
