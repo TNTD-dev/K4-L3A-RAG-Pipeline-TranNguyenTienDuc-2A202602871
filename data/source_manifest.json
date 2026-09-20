@@ -1,0 +1,200 @@
+[
+  {
+    "source_id": "academic-regulations-undergraduate-v8-1",
+    "title": "Academic Regulations for Full-Time Undergraduate Programs",
+    "url": "https://policy.vinuni.edu.vn/wp-content/uploads/2023/05/VU_HT03.EN_Academic-Regulations-For-Full-Time-Undergraduate-Programs_30102024.pdf",
+    "mode": "student_life",
+    "classification": "Public",
+    "policy_version": "V8.1",
+    "effective_date": "2024-10-30",
+    "crawl_timestamp": "2026-09-20T07:40:00+00:00",
+    "content_type": "pdf"
+  },
+  {
+    "source_id": "financial-regulations-student-ay25-26",
+    "title": "Financial Regulations and Tariff for Students",
+    "url": "https://policy.vinuni.edu.vn/wp-content/uploads/2025/05/VUNI.TS03_Student.EN_Quy-dinh-tai-chinh-va-Bieu-phi-_25-26_15.05.2025-Websent.pdf",
+    "mode": "student_life",
+    "classification": "Public",
+    "policy_version": "AY25-26",
+    "effective_date": "2025-05-15",
+    "crawl_timestamp": "2026-09-20T07:40:00+00:00",
+    "content_type": "pdf"
+  },
+  {
+    "source_id": "financial-regulations-admissions",
+    "title": "Financial Regulations and Tariff",
+    "url": "https://admissions.vinuni.edu.vn/wp-content/uploads/sites/6/2023/06/ENGLISH_Quy-dinh-tai-chinh-va-bieu-phi_08.02.2023.pdf",
+    "mode": "admissions",
+    "classification": "Public",
+    "policy_version": "2023",
+    "effective_date": "2023-02-08",
+    "crawl_timestamp": "2026-09-20T07:40:00+00:00",
+    "content_type": "pdf"
+  },
+  {
+    "source_id": "undergraduate-student-handbook",
+    "title": "VinUni Undergraduate Student Handbook",
+    "url": "https://vinuni.edu.vn/wp-content/uploads/2020/10/201005_VinUni_Undergraduate_Student_Handbook.pdf",
+    "mode": "student_life",
+    "classification": "Public",
+    "policy_version": "2020",
+    "effective_date": "2020-10-05",
+    "crawl_timestamp": "2026-09-20T07:40:00+00:00",
+    "content_type": "pdf"
+  },
+  {
+    "source_id": "residential-life-guideline-v5",
+    "title": "Residential Life Guideline",
+    "url": "https://policy.vinuni.edu.vn/wp-content/uploads/2025/08/GDL-SAM-008_Residential-Life-Guideline_07.8.2025.pdf",
+    "mode": "student_life",
+    "classification": "Public",
+    "policy_version": "GDL-SAM-008-V5.0",
+    "effective_date": "2025-06-20",
+    "crawl_timestamp": "2026-09-20T07:40:00+00:00",
+    "content_type": "pdf"
+  },
+  {
+    "source_id": "internship-management-v2",
+    "title": "Internship Management Policy",
+    "url": "https://policy.vinuni.edu.vn/wp-content/uploads/2025/10/POL-CAID-001-V2.0_Internship-Management-Policy_15.10.2025.pdf",
+    "mode": "student_life",
+    "classification": "Public",
+    "policy_version": "POL-CAID-001-V2.0",
+    "effective_date": "2025-10-15",
+    "crawl_timestamp": "2026-09-20T07:40:00+00:00",
+    "content_type": "pdf"
+  },
+  {
+    "source_id": "student-code-of-conduct-v5",
+    "title": "Student Code of Conduct",
+    "url": "https://policy.vinuni.edu.vn/wp-content/uploads/2025/12/VU_CTSV02_Student-Code-of-Conduct_24.12.2025.pdf",
+    "mode": "student_life",
+    "classification": "Public",
+    "policy_version": "VU_CTSV02.EN-V5.0",
+    "effective_date": "2025-12-24",
+    "crawl_timestamp": "2026-09-20T07:40:00+00:00",
+    "content_type": "pdf"
+  },
+  {
+    "source_id": "entry-scholarship-maintenance-v2-1",
+    "title": "Guidelines for Maintaining Entry Scholarship and Financial Aid Support",
+    "url": "https://policy.vinuni.edu.vn/wp-content/uploads/2025/09/GDL-SAM-004-V2.1_Guidelines-for-maintaining-entry-scholarship-and-financial-aid-support_4.9.2025.pdf",
+    "mode": "admissions",
+    "classification": "Public",
+    "policy_version": "GDL-SAM-004-V2.1",
+    "effective_date": "2025-09-04",
+    "crawl_timestamp": "2026-09-20T07:40:00+00:00",
+    "content_type": "pdf"
+  },
+  {
+    "source_id": "admissions-undergraduate",
+    "title": "Undergraduate Programs - Admission",
+    "url": "https://admissions.vinuni.edu.vn/undergraduate/",
+    "mode": "admissions",
+    "classification": "Public",
+    "policy_version": null,
+    "effective_date": "2026-09-20",
+    "crawl_timestamp": "2026-09-20T07:40:00+00:00",
+    "content_type": "page"
+  },
+  {
+    "source_id": "admissions-scholarships",
+    "title": "Scholarships for Prospective Undergraduates",
+    "url": "https://admissions.vinuni.edu.vn/scholarship-and-financial-aid/undergraduate-programs/scholarships/",
+    "mode": "admissions",
+    "classification": "Public",
+    "policy_version": null,
+    "effective_date": "2026-09-20",
+    "crawl_timestamp": "2026-09-20T07:40:00+00:00",
+    "content_type": "page"
+  },
+  {
+    "source_id": "admissions-tuition",
+    "title": "Undergraduate Tuition Fees",
+    "url": "https://admissions.vinuni.edu.vn/tuition-fee/undergraduate/",
+    "mode": "admissions",
+    "classification": "Public",
+    "policy_version": "AY2026-2027",
+    "effective_date": "2026-09-20",
+    "crawl_timestamp": "2026-09-20T07:40:00+00:00",
+    "content_type": "page"
+  },
+  {
+    "source_id": "admissions-tuition-financial-support",
+    "title": "Tuition Fee, Scholarship, and Financial Aids",
+    "url": "https://admissions.vinuni.edu.vn/tuition-fee-and-financial-support/",
+    "mode": "admissions",
+    "classification": "Public",
+    "policy_version": "AY2024-2025",
+    "effective_date": "2024-09-01",
+    "crawl_timestamp": "2026-09-20T07:40:00+00:00",
+    "content_type": "page"
+  },
+  {
+    "source_id": "admissions-tuition-faq",
+    "title": "Tuition Fee and Financial Aid FAQ",
+    "url": "https://admissions.vinuni.edu.vn/undergraduate/faqs/tuition-fee-scholarship-and-financial-aids/",
+    "mode": "admissions",
+    "classification": "Public",
+    "policy_version": null,
+    "effective_date": "2026-09-20",
+    "crawl_timestamp": "2026-09-20T07:40:00+00:00",
+    "content_type": "page"
+  },
+  {
+    "source_id": "academic-regulations-page",
+    "title": "Academic Regulations for Full-Time Undergraduate Programs",
+    "url": "https://policy.vinuni.edu.vn/all-policies/academic-regulations-for-full-time-undergraduate-programs/",
+    "mode": "student_life",
+    "classification": "Public",
+    "policy_version": "V8.1",
+    "effective_date": "2024-10-30",
+    "crawl_timestamp": "2026-09-20T07:40:00+00:00",
+    "content_type": "page"
+  },
+  {
+    "source_id": "residential-life-page",
+    "title": "Residential Life Guideline",
+    "url": "https://policy.vinuni.edu.vn/all-policies/residential-life-guideline/",
+    "mode": "student_life",
+    "classification": "Public",
+    "policy_version": "GDL-SAM-008-V5.0",
+    "effective_date": "2025-06-20",
+    "crawl_timestamp": "2026-09-20T07:40:00+00:00",
+    "content_type": "page"
+  },
+  {
+    "source_id": "internship-management-page",
+    "title": "Internship Management Policy",
+    "url": "https://policy.vinuni.edu.vn/all-policies/internship-management-policy/",
+    "mode": "student_life",
+    "classification": "Public",
+    "policy_version": "POL-CAID-001-V2.0",
+    "effective_date": "2025-10-15",
+    "crawl_timestamp": "2026-09-20T07:40:00+00:00",
+    "content_type": "page"
+  },
+  {
+    "source_id": "financial-support-page",
+    "title": "Guidelines for Student Financial Aid Support Request",
+    "url": "https://policy.vinuni.edu.vn/all-policies/guidelines-for-student-financial-support-request/",
+    "mode": "student_life",
+    "classification": "Public",
+    "policy_version": "GDL-FAO-001-V2.0",
+    "effective_date": "2025-04-22",
+    "crawl_timestamp": "2026-09-20T07:40:00+00:00",
+    "content_type": "page"
+  },
+  {
+    "source_id": "student-code-of-conduct-page",
+    "title": "Student Code of Conduct",
+    "url": "https://policy.vinuni.edu.vn/all-policies/student-affairs-regulations-code-of-conduct/",
+    "mode": "student_life",
+    "classification": "Public",
+    "policy_version": "VU_CTSV02.EN-V5.0",
+    "effective_date": "2025-12-24",
+    "crawl_timestamp": "2026-09-20T07:40:00+00:00",
+    "content_type": "page"
+  }
+]

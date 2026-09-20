@@ -14,47 +14,94 @@ Cài đặt:
 """
 
 from pathlib import Path
+import json
+import re
+import subprocess
 
 
 LANDING_DIR = Path(__file__).parent.parent / "data" / "landing"
 OUTPUT_DIR = Path(__file__).parent.parent / "data" / "standardized"
 
 
+def _manifest_lookup() -> dict[str, dict]:
+    path = LANDING_DIR.parent / "source_manifest.json"
+    if not path.exists():
+        return {}
+    try:
+        entries = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    return {str(item.get("source_id")): item for item in entries if isinstance(item, dict)}
+
+
 def convert_legal_docs() -> None:
-    # TODO:Convert PDF/DOCX vào standardized/legal. 
-    #
-    # from markitdown import MarkItDown
-    # legal_dir = LANDING_DIR / "legal"
-    # output_dir = OUTPUT_DIR / "legal"
-    # output_dir.mkdir(parents=True, exist_ok=True)
-    # converter = MarkItDown()
-    # for path in legal_dir.iterdir():
-    #     if path.suffix.lower() in {".pdf", ".doc", ".docx"}:
-    #         result = converter.convert(str(path))
-    #         (output_dir / f"{path.stem}.md").write_text(
-    #             result.text_content, encoding="utf-8"
-    #         )
-    raise NotImplementedError("Implement convert_legal_docs")
+    legal_dir = LANDING_DIR / "legal"
+    output_dir = OUTPUT_DIR / "legal"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    manifest = _manifest_lookup()
+    try:
+        from markitdown import MarkItDown
+        converter = MarkItDown()
+    except Exception:
+        converter = None
+    for path in sorted(legal_dir.iterdir()):
+        if path.suffix.lower() not in {".pdf", ".doc", ".docx"}:
+            continue
+        text = ""
+        if converter is not None:
+            try:
+                text = converter.convert(str(path)).text_content
+            except Exception:
+                text = ""
+        if not text:
+            try:
+                from pypdf import PdfReader
+                text = "\n\n".join(page.extract_text() or "" for page in PdfReader(str(path)).pages)
+            except Exception:
+                try:
+                    text = subprocess.run(["pdftotext", "-layout", str(path), "-"], capture_output=True, text=True, check=True).stdout
+                except Exception:
+                    text = path.read_bytes().decode("utf-8", errors="ignore")
+        text = re.sub(r"\n{3,}", "\n\n", text).strip()
+        if text:
+            target = output_dir / f"{path.stem}.md"
+            item = manifest.get(path.stem, {})
+            metadata = {
+                "source_id": item.get("source_id", path.stem), "source": path.name,
+                "title": item.get("title", path.stem), "doc_type": "legal",
+                "url": item.get("url"), "mode": item.get("mode"),
+                "classification": item.get("classification", "Public"),
+                "policy_version": item.get("policy_version"),
+                "effective_date": item.get("effective_date"),
+                "crawl_timestamp": item.get("crawl_timestamp"),
+            }
+            header = "---\n" + "\n".join(f"{key}: {json.dumps(value, ensure_ascii=False)}" for key, value in metadata.items()) + "\n---\n\n"
+            target.write_text(header + f"# {metadata['title']}\n\n{text}\n", encoding="utf-8")
 
 
 def convert_news_articles() -> None:
-    # TODO: Convert JSON vào standardized/news.
-    #
-    # import json
-    # news_dir = LANDING_DIR / "news"
-    # output_dir = OUTPUT_DIR / "news"
-    # output_dir.mkdir(parents=True, exist_ok=True)
-    # for path in news_dir.glob("*.json"):
-    #     data = json.loads(path.read_text(encoding="utf-8"))
-    #     header = (
-    #         f"# {data['title']}\n\n"
-    #         f"**Source:** {data['url']}\n\n"
-    #         f"**Crawled:** {data['date_crawled']}\n\n---\n\n"
-    #     )
-    #     (output_dir / f"{path.stem}.md").write_text(
-    #         header + data["content_markdown"], encoding="utf-8"
-    #     )
-    raise NotImplementedError("Implement convert_news_articles")
+    news_dir = LANDING_DIR / "news"
+    output_dir = OUTPUT_DIR / "news"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    manifest_by_url = {item.get("url"): item for item in _manifest_lookup().values()}
+    for path in sorted(news_dir.glob("*.json")):
+        data = json.loads(path.read_text(encoding="utf-8"))
+        content = str(data.get("content_markdown", "")).strip()
+        if not content:
+            continue
+        metadata = {
+            "source_id": manifest_by_url.get(data.get("url"), {}).get("source_id", path.stem),
+            "source": path.name, "title": data.get("title", path.stem),
+            "doc_type": "news", "url": data.get("url"),
+            "crawl_timestamp": data.get("date_crawled"),
+        }
+        item = manifest_by_url.get(data.get("url"), {})
+        metadata.update({
+            "mode": item.get("mode"), "classification": data.get("classification", item.get("classification", "Public")),
+            "policy_version": item.get("policy_version"), "effective_date": item.get("effective_date"),
+        })
+        header = "---\n" + "\n".join(f"{key}: {json.dumps(value, ensure_ascii=False)}" for key, value in metadata.items()) + "\n---\n\n"
+        (output_dir / f"{path.stem}.md").write_text(header + f"# {metadata['title']}\n\n" + content + "\n", encoding="utf-8")
 
 
 def convert_all() -> None:
