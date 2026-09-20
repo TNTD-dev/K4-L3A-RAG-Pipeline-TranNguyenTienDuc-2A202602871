@@ -2,5 +2,6 @@
 
 from .interface import RetrievalEngine
 from .default import TaskRetrievalEngine
+from .advanced import AdvancedRetrievalEngine
 
-__all__ = ["RetrievalEngine", "TaskRetrievalEngine"]
+__all__ = ["RetrievalEngine", "TaskRetrievalEngine", "AdvancedRetrievalEngine"]

@@ -115,3 +115,131 @@ def test_rrf_deduplication():
     results = engine.retrieve("Text", top_k=5)
     assert len(results) == 1
     assert results[0]["retrieval_method"] == "hybrid"
+
+
+def test_empty_inputs_and_top_k_are_safe(base_engine):
+    assert base_engine.retrieve("", top_k=5) == []
+    assert base_engine.retrieve("query", top_k=0) == []
+    assert len(base_engine.retrieve("Admissions", top_k=1)) <= 1
+
+
+def test_threshold_uses_best_dense_score_even_when_provider_is_unsorted():
+    class UnorderedStore:
+        def search(self, vector, top_k):
+            del vector, top_k
+            return [
+                {"id": "low", "content": "low", "score": 0.1, "metadata": metadata()},
+                {"id": "high", "content": "high", "score": 0.9, "metadata": metadata()},
+            ]
+
+    class Fallback:
+        def search(self, query, top_k):
+            del query, top_k
+            return [{"id": "fallback", "content": "fallback", "score": 1.0, "metadata": metadata()}]
+
+    engine = AdvancedRetrievalEngine(
+        vector_store=UnorderedStore(),
+        embedding_adapter=DeterministicEmbeddingAdapter(4),
+        bm25_index=FakeBM25([0.0, 0.0]),
+        corpus=[],
+        page_index=Fallback(),
+        score_threshold=0.5,
+    )
+    results = engine.retrieve("query", top_k=2)
+    assert [item["id"] for item in results] == ["high", "low"]
+
+
+def test_provider_failures_degrade_to_empty_or_remaining_results():
+    class BrokenEmbedding:
+        def embed(self, texts):
+            raise RuntimeError("embedding unavailable")
+
+    class BrokenBM25:
+        def get_scores(self, tokens):
+            raise RuntimeError("bm25 unavailable")
+
+    class BrokenPageIndex:
+        def search(self, query, top_k):
+            raise RuntimeError("pageindex unavailable")
+
+    engine = AdvancedRetrievalEngine(
+        vector_store=DeterministicVectorStoreAdapter(),
+        embedding_adapter=BrokenEmbedding(),
+        bm25_index=BrokenBM25(),
+        corpus=[{"id": "doc", "content": "content", "metadata": metadata()}],
+        page_index=BrokenPageIndex(),
+        score_threshold=0.5,
+    )
+    assert engine.retrieve("query") == []
+
+
+def test_pageindex_results_are_validated_deduplicated_sorted_and_mode_filtered():
+    class PageIndex:
+        def search(self, query, top_k):
+            del query, top_k
+            return [
+                {"id": "wrong", "content": "wrong mode", "score": 9, "metadata": metadata("student_life") | {"mode": "student_life"}},
+                {"id": "same", "content": "lower duplicate", "score": 0.2, "metadata": {}},
+                {"id": "same", "content": "higher duplicate", "score": 0.8, "metadata": {}},
+                {"id": "good", "content": "good", "score": 0.6, "metadata": metadata("admissions") | {"mode": "admissions"}},
+                {"id": "invalid", "content": "", "score": 4, "metadata": {}},
+            ]
+
+    engine = AdvancedRetrievalEngine(
+        vector_store=DeterministicVectorStoreAdapter(),
+        embedding_adapter=DeterministicEmbeddingAdapter(4),
+        bm25_index=FakeBM25([]), corpus=[], page_index=PageIndex(), score_threshold=2.0,
+    )
+    results = engine.retrieve("query", mode="admissions", top_k=5)
+    assert [item["id"] for item in results] == ["same", "good"]
+    assert all(item["retrieval_method"] == "pageindex" for item in results)
+    assert results[0]["metadata"]["chunk_index"] == 0
+
+
+def test_expansion_and_jina_toggles_are_independent(base_engine):
+    class CountingGeneration(DeterministicGenerationAdapter):
+        calls = 0
+        def complete(self, system_prompt, user_message):
+            self.calls += 1
+            return super().complete(system_prompt, user_message)
+
+    class CountingReranker(FakeReranker):
+        calls = 0
+        def rerank(self, query, documents):
+            self.calls += 1
+            return super().rerank(query, documents)
+
+    generation = CountingGeneration()
+    reranker = CountingReranker()
+    base_engine.score_threshold = -1.0
+    base_engine.generation_adapter = generation
+    base_engine.reranker_adapter = reranker
+    base_engine.use_luna_expansion = False
+    base_engine.use_jina_reranking = False
+    base_engine.retrieve("Admissions")
+    assert generation.calls == 0
+    assert reranker.calls == 0
+
+    base_engine.use_luna_expansion = True
+    base_engine.retrieve("Admissions")
+    assert generation.calls == 1
+    assert reranker.calls == 0
+
+    base_engine.use_jina_reranking = True
+    base_engine.retrieve("Admissions")
+    assert generation.calls == 2
+    assert reranker.calls == 1
+
+
+def test_rrf_is_called_exactly_once_per_hybrid_query(base_engine):
+    base_engine.score_threshold = -1.0
+    calls = {"count": 0}
+    original = base_engine._rrf_fuse
+
+    def counted(lists, top_k, k=60):
+        calls["count"] += 1
+        return original(lists, top_k, k)
+
+    base_engine._rrf_fuse = counted
+    base_engine.retrieve("Admissions")
+    assert calls["count"] == 1

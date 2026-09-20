@@ -20,6 +20,9 @@ class Settings:
     data_snapshot: str = "vinuni-public-2026-09-20"
     chroma_path: str = "chroma_db"
     embedding_dimension: int = 1536
+    use_hybrid: bool = True
+    use_luna_expansion: bool = False
+    use_jina_reranking: bool = False
 
     def __post_init__(self) -> None:
         if not self.embedding_model.strip():
@@ -39,6 +42,12 @@ class Settings:
         deterministic runs behave identically to a clean checkout.
         """
         load_dotenv()
+        def env_bool(name: str, default: bool) -> bool:
+            value = os.getenv(name)
+            if value is None:
+                return default
+            return value.strip().lower() in {"1", "true", "yes", "on"}
+
         return cls(
             openai_model=os.getenv("LLM_MODEL") or os.getenv("OPENAI_MODEL") or cls.openai_model,
             embedding_model=os.getenv("EMBEDDING_MODEL") or cls.embedding_model,
@@ -48,4 +57,7 @@ class Settings:
             data_snapshot=os.getenv("DATA_SNAPSHOT_ID") or cls.data_snapshot,
             chroma_path=os.getenv("CHROMA_DIR") or cls.chroma_path,
             embedding_dimension=int(os.getenv("EMBEDDING_DIM", cls.embedding_dimension.__str__())),
+            use_hybrid=env_bool("USE_HYBRID_RETRIEVAL", cls.use_hybrid),
+            use_luna_expansion=env_bool("USE_LUNA_EXPANSION", cls.use_luna_expansion),
+            use_jina_reranking=env_bool("USE_JINA_RERANKING", cls.use_jina_reranking),
         )

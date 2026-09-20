@@ -1,0 +1,13 @@
+{
+  "baseline_cases": 5,
+  "metric": "Recall@5",
+  "provider_mode": "deterministic offline doubles",
+  "results": {
+    "dense_only": 0.8,
+    "expansion_off": 0.8333333333333334,
+    "expansion_on": 1.0,
+    "hybrid_rrf": 1.0,
+    "rrf_off_jina": 1.0,
+    "rrf_on_jina": 1.0
+  }
+}
