@@ -17,6 +17,10 @@ class VectorlessSearchPort(Protocol):
     def search(self, query: str, top_k: int) -> list[SearchResult]: ...
 
 
+class RerankerPort(Protocol):
+    def rerank(self, query: str, documents: list[str]) -> list[float]: ...
+
+
 class GenerationPort(Protocol):
     def complete(self, system_prompt: str, user_message: str) -> str: ...
 

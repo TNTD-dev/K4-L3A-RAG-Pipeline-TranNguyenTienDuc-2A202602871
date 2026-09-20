@@ -1,96 +1,160 @@
-"""Recall@5 experiments for the advanced retrieval engine."""
+"""Reproducible offline Recall@5 comparisons for retrieval decisions.
 
-import pytest
-from src.vinuni_compass.retrieval.advanced import AdvancedRetrievalEngine
+The harness uses deterministic provider doubles and the same shared BM25/RRF
+seams as production. Live Luna/Jina runs are optional and are not required for
+the checked-in baseline report.
+"""
+
+from __future__ import annotations
+
+import json
+from pathlib import Path
+import sys
+
+if __package__ in {None, ""}:  # Allow the documented direct script command.
+    sys.path.insert(0, str(Path(__file__).parents[2]))
+
+from src.task6_lexical_search import build_bm25_index
 from src.vinuni_compass.providers.adapters import (
-    DeterministicEmbeddingAdapter,
-    DeterministicVectorStoreAdapter,
     DeterministicPageIndexAdapter,
-    DeterministicGenerationAdapter,
+    DeterministicVectorStoreAdapter,
 )
+from src.vinuni_compass.retrieval.advanced import AdvancedRetrievalEngine
 
-class FakeBM25:
-    def __init__(self, corpus):
-        self.corpus = corpus
-    def get_scores(self, tokens):
-        # Extremely naive BM25 for deterministic tests
-        scores = []
-        for item in self.corpus:
-            content = item["content"].lower()
-            score = sum(content.count(t) for t in tokens)
-            scores.append(float(score))
-        return scores
 
-def build_test_corpus():
+class KeywordEmbedding:
+    """Tiny deterministic query encoder with one intentional dense miss."""
+
+    vectors = {
+        "tuition deadline": [1.0, 0.0, 0.0, 0.0, 0.0],
+        "scholarship eligibility": [1.0, 0.0, 0.0, 0.0, 0.0],
+        "quiet hours dorm": [0.0, 0.0, 1.0, 0.0, 0.0],
+        "library hours": [0.0, 0.0, 0.0, 1.0, 0.0],
+        "internship credits": [0.0, 0.0, 0.0, 0.0, 1.0],
+        "financial aid": [1.0, 0.0, 0.0, 0.0, 0.0],
+    }
+
+    def embed(self, texts):
+        return [self.vectors.get(text.casefold(), [0.0] * 5) for text in texts]
+
+
+class ExpansionAdapter:
+    def complete(self, system_prompt, user_message):
+        del system_prompt
+        return "scholarship eligibility" if "financial aid" in user_message.casefold() else user_message
+
+
+class OverlapReranker:
+    def rerank(self, query, documents):
+        terms = set(query.casefold().split())
+        return [sum(term in document.casefold().split() for term in terms) for document in documents]
+
+
+def build_corpus():
+    rows = [
+        ("tuition", "tuition fees and payment deadline", "admissions"),
+        ("scholarship", "scholarship eligibility and application", "admissions"),
+        ("dorm", "residential quiet hours and dorm rules", "student_life"),
+        ("library", "library opening hours and services", "student_life"),
+        ("internship", "internship credits and placement rules", "student_life"),
+        ("generic", "general campus information", "student_life"),
+    ]
     return [
-        {"id": "doc1", "content": "The university admissions policy requires SAT scores.", "metadata": {"mode": "admissions", "source": "adm.md", "title": "Admissions", "doc_type": "legal"}},
-        {"id": "doc2", "content": "Student life includes many clubs and activities.", "metadata": {"mode": "student_life", "source": "life.md", "title": "Life", "doc_type": "news"}},
-        {"id": "doc3", "content": "Dormitory rules state quiet hours begin at 10 PM.", "metadata": {"mode": "student_life", "source": "dorm.md", "title": "Dorm", "doc_type": "legal"}},
-        {"id": "doc4", "content": "Financial aid applications open in January.", "metadata": {"mode": "admissions", "source": "fin.md", "title": "FinAid", "doc_type": "legal"}},
-        {"id": "doc5", "content": "The campus library is open 24/7 during exam weeks.", "metadata": {"mode": "student_life", "source": "lib.md", "title": "Library", "doc_type": "news"}}
+        {
+            "id": item_id,
+            "content": content,
+            "metadata": {
+                "source": f"{item_id}.md",
+                "title": item_id.title(),
+                "doc_type": "legal",
+                "url": None,
+                "chunk_index": 0,
+                "mode": mode,
+            },
+        }
+        for item_id, content, mode in rows
     ]
 
-def evaluate_recall_at_5(engine, dataset):
-    correct = 0
+
+def build_engine(*, hybrid=True, expansion=False, jina=False):
+    corpus = build_corpus()
+    vectors = {
+        "tuition": [1, 0, 0, 0, 0],
+        "scholarship": [0, 1, 0, 0, 0],
+        "dorm": [0, 0, 1, 0, 0],
+        "library": [0, 0, 0, 1, 0],
+        "internship": [0, 0, 0, 0, 1],
+        "generic": [0, 0, 0, 0, 0.5],
+    }
+    store = DeterministicVectorStoreAdapter()
+    store.upsert(
+        [row["id"] for row in corpus],
+        [row["content"] for row in corpus],
+        [vectors[row["id"]] for row in corpus],
+        [row["metadata"] for row in corpus],
+    )
+    return AdvancedRetrievalEngine(
+        vector_store=store,
+        embedding_adapter=KeywordEmbedding(),
+        bm25_index=build_bm25_index(corpus),
+        corpus=corpus,
+        page_index=DeterministicPageIndexAdapter(),
+        generation_adapter=ExpansionAdapter() if expansion else None,
+        reranker_adapter=OverlapReranker() if jina else None,
+        use_hybrid=hybrid,
+        use_luna_expansion=expansion,
+        use_jina_reranking=jina,
+        score_threshold=-1.0,
+    )
+
+
+def recall_at_5(engine, dataset):
+    hits = 0
     for query, expected_id in dataset:
-        results = engine.retrieve(query, top_k=5)
-        ids = [res["id"] for res in results]
-        if expected_id in ids:
-            correct += 1
-    return correct / len(dataset) if dataset else 0.0
+        if expected_id in {item["id"] for item in engine.retrieve(query, top_k=5)}:
+            hits += 1
+    return hits / len(dataset) if dataset else 0.0
 
-def test_recall_experiments():
-    corpus = build_test_corpus()
-    vector_store = DeterministicVectorStoreAdapter()
-    embedder = DeterministicEmbeddingAdapter(dimension=4)
-    # Give them orthogonal embeddings to simulate different concepts
-    vector_store.upsert(
-        [c["id"] for c in corpus],
-        [c["content"] for c in corpus],
-        [[1,0,0,0], [0,1,0,0], [0,0,1,0], [0,0,0,1], [1,1,0,0]],
-        [c["metadata"] for c in corpus]
-    )
-    bm25 = FakeBM25(corpus)
-    page_index = DeterministicPageIndexAdapter()
-    
-    # Dataset: (query, expected_doc_id)
-    dataset = [
-        ("admissions policy", "doc1"),
-        ("quiet hours", "doc3"),
-        ("financial aid", "doc4"),
-        ("library hours", "doc5")
+
+def run_experiments(output_path: Path | None = None) -> dict:
+    baseline = [
+        ("tuition deadline", "tuition"),
+        ("scholarship eligibility", "scholarship"),
+        ("quiet hours dorm", "dorm"),
+        ("library hours", "library"),
+        ("internship credits", "internship"),
     ]
-    
-    # 1. Dense Only
-    engine_dense = AdvancedRetrievalEngine(
-        vector_store=vector_store, embedding_adapter=embedder, bm25_index=FakeBM25([]),
-        corpus=[], page_index=page_index, score_threshold=0.0
-    )
-    recall_dense = evaluate_recall_at_5(engine_dense, dataset)
-    
-    # 2. Hybrid (Dense + BM25)
-    engine_hybrid = AdvancedRetrievalEngine(
-        vector_store=vector_store, embedding_adapter=embedder, bm25_index=bm25,
-        corpus=corpus, page_index=page_index, score_threshold=0.0
-    )
-    recall_hybrid = evaluate_recall_at_5(engine_hybrid, dataset)
-    
-    # 3. Hybrid + Luna Expansion
-    engine_luna = AdvancedRetrievalEngine(
-        vector_store=vector_store, embedding_adapter=embedder, bm25_index=bm25,
-        corpus=corpus, page_index=page_index, generation_adapter=DeterministicGenerationAdapter(),
-        use_luna_expansion=True, score_threshold=0.0
-    )
-    recall_luna = evaluate_recall_at_5(engine_luna, dataset)
-    
-    print("\n=== Retrieval Experiments (Recall@5) ===")
-    print(f"Dense Only:         {recall_dense:.2%}")
-    print(f"Hybrid (RRF):       {recall_hybrid:.2%}")
-    print(f"Hybrid + Luna:      {recall_luna:.2%}")
-    
-    assert recall_dense >= 0
-    assert recall_hybrid >= 0
-    assert recall_luna >= 0
+    expansion_cases = baseline + [("financial aid", "scholarship")]
+    report = {
+        "metric": "Recall@5",
+        "provider_mode": "deterministic offline doubles",
+        "baseline_cases": len(baseline),
+        "results": {
+            "dense_only": recall_at_5(build_engine(hybrid=False), baseline),
+            "hybrid_rrf": recall_at_5(build_engine(), baseline),
+            "expansion_off": recall_at_5(build_engine(), expansion_cases),
+            "expansion_on": recall_at_5(build_engine(expansion=True), expansion_cases),
+            "rrf_off_jina": recall_at_5(build_engine(), baseline),
+            "rrf_on_jina": recall_at_5(build_engine(jina=True), baseline),
+        },
+    }
+    if output_path is not None:
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    return report
+
+
+def test_recall_experiments(tmp_path):
+    report = run_experiments(tmp_path / "retrieval_ab.json")
+    results = report["results"]
+    assert 0.0 <= results["dense_only"] <= 1.0
+    assert 0.0 <= results["hybrid_rrf"] <= 1.0
+    assert results["hybrid_rrf"] >= results["dense_only"]
+    assert results["expansion_on"] >= results["expansion_off"]
+    assert 0.0 <= results["rrf_on_jina"] <= 1.0
+    assert (tmp_path / "retrieval_ab.json").exists()
+
 
 if __name__ == "__main__":
-    test_recall_experiments()
+    destination = Path(__file__).parents[2] / "reports" / "retrieval_ab.json"
+    print(json.dumps(run_experiments(destination), indent=2))

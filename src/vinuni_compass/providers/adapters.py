@@ -134,6 +134,47 @@ class DeterministicVectorStoreAdapter:
         return sorted(scored, key=lambda item: (-item["score"], item["id"]))[:top_k]
 
 
+class ChromaVectorStoreAdapter:
+    """Read the canonical Task 4 Chroma collection through the product port."""
+
+    def __init__(self, collection=None) -> None:
+        if collection is None:
+            from src.task4_chunking_indexing import get_collection
+            collection = get_collection()
+        self.collection = collection
+
+    def search(self, vector: Sequence[float], top_k: int) -> list[SearchResult]:
+        if top_k <= 0:
+            return []
+        response = self.collection.query(
+            query_embeddings=[list(vector)],
+            n_results=top_k,
+            include=["documents", "metadatas", "distances"],
+        )
+        ids = (response.get("ids") or [[]])[0]
+        documents = (response.get("documents") or [[]])[0]
+        metadatas = (response.get("metadatas") or [[]])[0]
+        distances = (response.get("distances") or [[]])[0]
+        rows: list[SearchResult] = []
+        for item_id, document, metadata, distance in zip(ids, documents, metadatas, distances):
+            rows.append({
+                "id": str(item_id),
+                "content": str(document or ""),
+                "score": max(0.0, 1.0 - float(distance)),
+                "metadata": metadata or {},
+                "retrieval_method": "dense",
+            })
+        return sorted(rows, key=lambda item: (-item["score"], item["id"]))
+
+
+class TaskPageIndexAdapter:
+    """Adapter for the optional course PageIndex boundary."""
+
+    def search(self, query: str, top_k: int) -> list[SearchResult]:
+        from src.task8_pageindex_vectorless import pageindex_search
+        return pageindex_search(query, top_k=top_k)
+
+
 class DeterministicPageIndexAdapter:
     """Offline PageIndex stand-in; callers can seed results for tests."""
 

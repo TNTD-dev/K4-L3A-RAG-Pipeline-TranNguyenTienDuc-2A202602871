@@ -1,10 +1,11 @@
 """Adapters for true external dependencies."""
 
-from .ports import EmbeddingPort, GenerationPort, VectorStorePort, VectorlessSearchPort
+from .ports import EmbeddingPort, GenerationPort, RerankerPort, VectorStorePort, VectorlessSearchPort
 
 __all__ = [
     "EmbeddingPort",
     "GenerationPort",
+    "RerankerPort",
     "VectorStorePort",
     "VectorlessSearchPort",
 ]
@@ -13,8 +14,10 @@ from .adapters import (
     DeterministicGenerationAdapter,
     DeterministicPageIndexAdapter,
     DeterministicVectorStoreAdapter,
+    ChromaVectorStoreAdapter,
     OpenAIEmbeddingAdapter,
     OpenAIGenerationAdapter,
+    TaskPageIndexAdapter,
 )
 
 __all__ = [
@@ -22,6 +25,8 @@ __all__ = [
     "DeterministicGenerationAdapter",
     "DeterministicPageIndexAdapter",
     "DeterministicVectorStoreAdapter",
+    "ChromaVectorStoreAdapter",
     "OpenAIEmbeddingAdapter",
     "OpenAIGenerationAdapter",
+    "TaskPageIndexAdapter",
 ]
