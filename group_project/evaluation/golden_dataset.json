@@ -1,0 +1,419 @@
+[
+  {
+    "id": "A01",
+    "category": "admissions",
+    "language": "en",
+    "mode": "admissions",
+    "question": "What is the listed tuition fee per academic year for the Bachelor of Nursing programme?",
+    "expected_answer": "For academic year 2026-2027 the listed tuition for the Bachelor of Nursing is 349,650,000 VND per academic year over a standard duration of 4 years. The listed figure excludes the 35% Vingroup tuition subsidy.",
+    "expected_context": "Bachelor of Nursing 4 349,650,000 174,825,000 9,780,000",
+    "expected_source_ids": [
+      "admissions-tuition"
+    ],
+    "expected_refusal": false,
+    "notes": ""
+  },
+  {
+    "id": "A02",
+    "category": "admissions",
+    "language": "vi",
+    "mode": "admissions",
+    "question": "Học phí niêm yết một năm của chương trình Bác sĩ Y khoa là bao nhiêu?",
+    "expected_answer": "Học phí niêm yết của chương trình Medical Doctor là 815,850,000 VND mỗi năm học, thời gian chuẩn 6 năm. Mức này chưa trừ khoản trợ cấp học phí 35% từ Vingroup.",
+    "expected_context": "Medical Doctor 6 815,850,000 407,925,000 27,195,000",
+    "expected_source_ids": [
+      "admissions-tuition"
+    ],
+    "expected_refusal": false,
+    "notes": ""
+  },
+  {
+    "id": "A03",
+    "category": "admissions",
+    "language": "en",
+    "mode": "admissions",
+    "question": "What tuition subsidy does Vingroup provide and who receives it?",
+    "expected_answer": "Vingroup, the founder of VinUniversity, provides a 35% tuition subsidy. It is granted automatically to all admitted students, Vietnamese and international, and remains valid for the entire duration of study; the commitment runs from 2025 to 2030.",
+    "expected_context": "The 35% tuition subsidy is automatically granted to all admitted students (both Vietnamese and international) and remains valid throughout the entire study period.",
+    "expected_source_ids": [
+      "admissions-tuition",
+      "admissions-scholarships"
+    ],
+    "expected_refusal": false,
+    "notes": ""
+  },
+  {
+    "id": "A04",
+    "category": "admissions",
+    "language": "vi",
+    "mode": "admissions",
+    "question": "Học bổng President's Excellence Scholarship bao gồm những gì?",
+    "expected_answer": "President's Excellence Scholarship là học bổng toàn phần (full-ride), chi trả 100% học phí và chi phí sinh hoạt.",
+    "expected_context": "President's Excellence Scholarship: Full-ride scholarship (Covers 100% of tuition and living expenses).",
+    "expected_source_ids": [
+      "admissions-scholarships"
+    ],
+    "expected_refusal": false,
+    "notes": ""
+  },
+  {
+    "id": "A05",
+    "category": "admissions",
+    "language": "en",
+    "mode": "admissions",
+    "question": "Which merit-based scholarship covers 80% or 90% of tuition?",
+    "expected_answer": "The Dean's Distinction Scholarship covers 80% or 90% of tuition fees.",
+    "expected_context": "Dean's Distinction Scholarship: Covers 80% or 90% of tuition.",
+    "expected_source_ids": [
+      "admissions-scholarships"
+    ],
+    "expected_refusal": false,
+    "notes": ""
+  },
+  {
+    "id": "A06",
+    "category": "admissions",
+    "language": "vi",
+    "mode": "admissions",
+    "question": "Sinh viên cần GPA tối thiểu bao nhiêu để giữ học bổng toàn phần hoặc 100%?",
+    "expected_answer": "Để duy trì học bổng Full hoặc 100%, sinh viên phải giữ GPA tích lũy từ 3.2 trở lên trong năm học được xét, đồng thời không vi phạm kỷ luật mức Tier 3 hoặc Tier 4 và hoàn thành tự đánh giá E.X.C.E.L với cố vấn.",
+    "expected_context": "Maintain a cumulative GPA of 3.2 or higher in the academic year under evaluation",
+    "expected_source_ids": [
+      "entry-scholarship-maintenance-v2-1",
+      "admissions-tuition-faq"
+    ],
+    "expected_refusal": false,
+    "notes": ""
+  },
+  {
+    "id": "A07",
+    "category": "admissions",
+    "language": "en",
+    "mode": "admissions",
+    "question": "What GPA is required to renew a merit scholarship in the 50% to 90% range?",
+    "expected_answer": "Scholarships at 50%, 60%, 70%, 80% and 90% are renewed when the student maintains a cumulative GPA of 2.5 or higher for the academic year under evaluation, keeps good disciplinary standing, and completes the E.X.C.E.L self-evaluation with an advisor.",
+    "expected_context": "Maintaining a cumulative GPA of 2.5 or higher in the academic year under evaluation",
+    "expected_source_ids": [
+      "entry-scholarship-maintenance-v2-1",
+      "admissions-tuition-faq"
+    ],
+    "expected_refusal": false,
+    "notes": ""
+  },
+  {
+    "id": "A08",
+    "category": "admissions",
+    "language": "en",
+    "mode": "admissions",
+    "question": "Is the registration fee refundable after I confirm my admission?",
+    "expected_answer": "No. The registration fee is not refundable in any case, but it is deductible from the tuition fee or other payments of the first official semester, except when the variance between total payables and deductions is smaller than the fee itself.",
+    "expected_context": "This fee is NOT refundable in all cases but deductible from the tuition fees or other payments of the official semester of the first academic year",
+    "expected_source_ids": [
+      "financial-regulations-admissions"
+    ],
+    "expected_refusal": false,
+    "notes": ""
+  },
+  {
+    "id": "A09",
+    "category": "admissions",
+    "language": "vi",
+    "mode": "admissions",
+    "question": "Học phí ở VinUni được đóng mấy lần trong một năm học?",
+    "expected_answer": "Học phí được đóng hai lần mỗi năm, vào đầu mỗi học kỳ chính là học kỳ Thu (Fall) và học kỳ Xuân (Spring).",
+    "expected_context": "tuition fee payment will be made twice a year at the beginning of each main semester (Fall Semester and Spring Semester)",
+    "expected_source_ids": [
+      "admissions-tuition-financial-support",
+      "admissions-tuition-faq"
+    ],
+    "expected_refusal": false,
+    "notes": ""
+  },
+  {
+    "id": "A10",
+    "category": "admissions",
+    "language": "en",
+    "mode": "admissions",
+    "question": "What is the WIT scholarship at VinUniversity?",
+    "expected_answer": "The WIT (Women in Tech) Scholarship provides an additional 5% tuition support for female applicants pursuing technology or science-related fields. It is a Special Encouragement Scholarship and is stackable with other awards.",
+    "expected_context": "WIT (Woman in Tech) Scholarship: Provides an additional 5% tuition support for female applicants pursuing studies in technology or science-related fields.",
+    "expected_source_ids": [
+      "admissions-scholarships"
+    ],
+    "expected_refusal": false,
+    "notes": ""
+  },
+  {
+    "id": "S01",
+    "category": "student_life",
+    "language": "en",
+    "mode": "student_life",
+    "question": "What are the quiet hours in VinUni residences from Sunday to Thursday?",
+    "expected_answer": "Quiet hours run from 10:00 PM to 7:00 AM Sunday through Thursday. On Friday and Saturday they run from 12:00 AM to 7:00 AM, and adjustments may apply during holidays or exam weeks.",
+    "expected_context": "Quiet Hours Sunday - Thursday 10:00 PM - 7:00 AM",
+    "expected_source_ids": [
+      "residential-life-guideline-v5"
+    ],
+    "expected_refusal": false,
+    "notes": ""
+  },
+  {
+    "id": "S02",
+    "category": "student_life",
+    "language": "vi",
+    "mode": "student_life",
+    "question": "Giờ giới nghiêm trong khu nội trú của VinUni là mấy giờ?",
+    "expected_answer": "Giờ giới nghiêm trên campus áp dụng tất cả các ngày, sau 23:00 (11:00 PM) sinh viên phải ở trong khuôn viên trường. Về muộn có thể không được vào campus.",
+    "expected_context": "Curfew (On-campus) All days After 11:00 PM Students should remain on campus after this time.",
+    "expected_source_ids": [
+      "residential-life-guideline-v5"
+    ],
+    "expected_refusal": false,
+    "notes": ""
+  },
+  {
+    "id": "S03",
+    "category": "student_life",
+    "language": "en",
+    "mode": "student_life",
+    "question": "How many guests may one resident host at the same time?",
+    "expected_answer": "Each resident may have no more than three guests visiting at the same time. Guests must always be accompanied by the host and must not be given the apartment key.",
+    "expected_context": "Each resident shall have no more than three guests visiting at the same time.",
+    "expected_source_ids": [
+      "residential-life-guideline-v5"
+    ],
+    "expected_refusal": false,
+    "notes": ""
+  },
+  {
+    "id": "S04",
+    "category": "student_life",
+    "language": "vi",
+    "mode": "student_life",
+    "question": "Muốn đăng ký khách ở lại qua đêm thì phải nộp đơn trước bao lâu?",
+    "expected_answer": "Sinh viên điền form Guest Visit trực tuyến trước 05 ngày làm việc đối với khách ở qua đêm, và trước 03 ngày làm việc đối với khách đến thăm trong ngày.",
+    "expected_context": "students fill in the Guest Visit online form 03 working days in advance for visit within the day and 05 working days in advance for overnight guests.",
+    "expected_source_ids": [
+      "residential-life-guideline-v5"
+    ],
+    "expected_refusal": false,
+    "notes": ""
+  },
+  {
+    "id": "S05",
+    "category": "student_life",
+    "language": "en",
+    "mode": "student_life",
+    "question": "What is the minimum number of credits I must register for in one semester?",
+    "expected_answer": "The minimum number of credits required to register for one semester is 12 credits.",
+    "expected_context": "The minimum number of credits required to register for one semester is 12 credits",
+    "expected_source_ids": [
+      "academic-regulations-undergraduate-v8-1"
+    ],
+    "expected_refusal": false,
+    "notes": ""
+  },
+  {
+    "id": "S06",
+    "category": "student_life",
+    "language": "en",
+    "mode": "student_life",
+    "question": "What are the criteria to be placed on the Dean's List?",
+    "expected_answer": "A student is placed on the Dean's List at the end of a regular semester with a minimum SGPA of 3.60 calculated on at least 12 letter-graded credits, no failed course among those registered, and no recorded confirmed act of major misconduct. The achievement is recorded on the transcript.",
+    "expected_context": "Minimum SGPA 3.60 (Very Good), calculated at least 12 letter-graded credits per regular semester, have not failed any course registered",
+    "expected_source_ids": [
+      "academic-regulations-undergraduate-v8-1"
+    ],
+    "expected_refusal": false,
+    "notes": ""
+  },
+  {
+    "id": "S07",
+    "category": "student_life",
+    "language": "vi",
+    "mode": "student_life",
+    "question": "Khi nào một sinh viên bị đưa vào diện academic probation?",
+    "expected_answer": "Sinh viên bị academic warning hai lần liên tiếp sẽ chuyển sang diện academic probation. Khi đó sinh viên phải được cố vấn học tập phê duyệt mới được đăng ký môn, và ở diện này cho đến khi GPA tích lũy đạt 1.40/4.0 với năm hai, 1.60/4.0 với năm ba, hoặc 1.80/4.0 với năm tư trở đi.",
+    "expected_context": "A student who is placed on academic warning two consecutive times is subject to academic probation.",
+    "expected_source_ids": [
+      "academic-regulations-undergraduate-v8-1"
+    ],
+    "expected_refusal": false,
+    "notes": ""
+  },
+  {
+    "id": "S08",
+    "category": "student_life",
+    "language": "en",
+    "mode": "student_life",
+    "question": "What disciplinary actions correspond to Tier 3 and Tier 4 misconduct?",
+    "expected_answer": "Tier 3 is Temporary Suspension and Tier 4 is Dismissal or Expulsion. Tier 3 and Tier 4 cases are assessed by the Student Awarding and Disciplinary Committee, which proposes the action to the Provost for final approval.",
+    "expected_context": "Tier 1 Tier 2 Tier 3 Tier 4 Expression of Disapproval Warning Temporary Suspension Dismissal/ Expulsion",
+    "expected_source_ids": [
+      "student-code-of-conduct-v5"
+    ],
+    "expected_refusal": false,
+    "notes": ""
+  },
+  {
+    "id": "S09",
+    "category": "student_life",
+    "language": "en",
+    "mode": "student_life",
+    "question": "What is the minimum duration of a full-time credit-bearing internship in the Fall semester?",
+    "expected_answer": "For full-time internships the minimum duration is 7 weeks in the Fall and Spring semesters, and 6 weeks in the summer semester. Part-time internships require a minimum of 240 hours per semester.",
+    "expected_context": "For full-time internships: Minimum duration of each 7 weeks for Fall and Spring semesters and 6 weeks for summer semester.",
+    "expected_source_ids": [
+      "internship-management-v2"
+    ],
+    "expected_refusal": false,
+    "notes": ""
+  },
+  {
+    "id": "S10",
+    "category": "student_life",
+    "language": "vi",
+    "mode": "student_life",
+    "question": "Sinh viên cần GPA bao nhiêu để được đăng ký kỳ thực tập tính tín chỉ?",
+    "expected_answer": "Sinh viên cần GPA tổng từ 2.0 trở lên, cùng các điều kiện tiên quyết của bộ môn phụ trách, đã hoàn thành các môn Foundation và đăng ký trong 3 tuần đầu học kỳ.",
+    "expected_context": "Have 2.0 overall GPA, and all pre-requisites from supervising academic department.",
+    "expected_source_ids": [
+      "internship-management-v2"
+    ],
+    "expected_refusal": false,
+    "notes": ""
+  },
+  {
+    "id": "K01",
+    "category": "keyword_multisource",
+    "language": "en",
+    "mode": "auto",
+    "question": "Compare the GPA needed to keep a full scholarship with the GPA needed for the Dean's List.",
+    "expected_answer": "They are different thresholds from two different policies. A Full or 100% merit scholarship is renewed with a cumulative GPA of 3.2 or higher for the academic year. The Dean's List requires a semester GPA of at least 3.60 on at least 12 letter-graded credits with no failed course.",
+    "expected_context": "Maintain a cumulative GPA of 3.2 or higher in the academic year under evaluation | Minimum SGPA 3.60 (Very Good), calculated at least 12 letter-graded credits per regular semester",
+    "expected_source_ids": [
+      "entry-scholarship-maintenance-v2-1",
+      "academic-regulations-undergraduate-v8-1"
+    ],
+    "expected_refusal": false,
+    "notes": "Needs evidence from two documents; a single-chunk answer is incomplete."
+  },
+  {
+    "id": "K02",
+    "category": "keyword_multisource",
+    "language": "vi",
+    "mode": "auto",
+    "question": "Sau khi trừ trợ cấp 35%, sinh viên ngành Điều dưỡng còn phải đóng khoảng bao nhiêu một năm?",
+    "expected_answer": "Học phí niêm yết ngành Điều dưỡng là 349,650,000 VND mỗi năm, và tất cả sinh viên trúng tuyển được hưởng Quỹ Phát triển Giáo dục 35%. Sau khi trừ, phần còn lại khoảng 227 triệu VND mỗi năm.",
+    "expected_context": "Nursing: 349,650,000 VND (approximately 15,000 USD) per year | the remaining tuition fee is about 227 million VND per year for the Nursing program",
+    "expected_source_ids": [
+      "admissions-tuition-faq",
+      "admissions-tuition"
+    ],
+    "expected_refusal": false,
+    "notes": "Requires combining the listed fee with the 35% subsidy figure."
+  },
+  {
+    "id": "K03",
+    "category": "keyword_multisource",
+    "language": "en",
+    "mode": "auto",
+    "question": "Which VinUni policy carries the reference number GDL-SAM-008?",
+    "expected_answer": "GDL-SAM-008 is the reference number of the Residential Life Guideline, version V5.0, effective 20 June 2025.",
+    "expected_context": "GDL-SAM-008_Residential-Life-Guideline",
+    "expected_source_ids": [
+      "residential-life-guideline-v5"
+    ],
+    "expected_refusal": false,
+    "notes": "Exact-keyword lookup; dense embeddings tend to miss a bare document code."
+  },
+  {
+    "id": "K04",
+    "category": "keyword_multisource",
+    "language": "en",
+    "mode": "auto",
+    "question": "What does E.X.C.E.L refer to in the scholarship renewal criteria?",
+    "expected_answer": "E.X.C.E.L is the self-evaluation that scholarship holders must complete and then discuss with their advisor. Completing it is one of the three renewal conditions alongside the GPA threshold and good disciplinary standing.",
+    "expected_context": "Complete the E.X.C.E.L self-evaluation and meet with the Advisor to discuss the self-evaluation.",
+    "expected_source_ids": [
+      "entry-scholarship-maintenance-v2-1"
+    ],
+    "expected_refusal": false,
+    "notes": "Exact-keyword lookup on an acronym written with periods."
+  },
+  {
+    "id": "K05",
+    "category": "keyword_multisource",
+    "language": "vi",
+    "mode": "auto",
+    "question": "Điều kiện duy trì học bổng yêu cầu sinh viên không được vi phạm kỷ luật ở mức nào, và mức đó tương ứng với hình thức xử lý gì?",
+    "expected_answer": "Sinh viên không được vi phạm kỷ luật mức Tier 3 (major misconduct) hoặc Tier 4 (extremely serious misconduct) theo Student Code of Conduct. Tier 3 tương ứng với đình chỉ có thời hạn và Tier 4 tương ứng với buộc thôi học.",
+    "expected_context": "The student must not commit major misconduct (Tier 3) or extremely serious misconduct (Tier4) as per Student Code of Conduct | Tier 3 Tier 4 Temporary Suspension Dismissal/ Expulsion",
+    "expected_source_ids": [
+      "entry-scholarship-maintenance-v2-1",
+      "student-code-of-conduct-v5"
+    ],
+    "expected_refusal": false,
+    "notes": "Two documents: the scholarship guideline names the tier, the conduct policy defines it."
+  },
+  {
+    "id": "O01",
+    "category": "out_of_scope",
+    "language": "en",
+    "mode": "auto",
+    "question": "What is the weather in Hanoi tomorrow?",
+    "expected_answer": "Refusal. Weather is outside the scope of the VinUni policy and admissions corpus, so the assistant should decline and point to an appropriate source instead of guessing.",
+    "expected_context": "No supporting evidence exists in the Data Snapshot.",
+    "expected_source_ids": [],
+    "expected_refusal": true,
+    "notes": ""
+  },
+  {
+    "id": "O02",
+    "category": "out_of_scope",
+    "language": "vi",
+    "mode": "auto",
+    "question": "Học phí của Đại học Quốc gia Hà Nội năm 2026 là bao nhiêu?",
+    "expected_answer": "Từ chối. Data Snapshot chỉ chứa nguồn công khai của VinUniversity, không có thông tin học phí của trường khác, nên trợ lý phải từ chối thay vì suy đoán.",
+    "expected_context": "No supporting evidence exists in the Data Snapshot.",
+    "expected_source_ids": [],
+    "expected_refusal": true,
+    "notes": ""
+  },
+  {
+    "id": "O03",
+    "category": "out_of_scope",
+    "language": "en",
+    "mode": "auto",
+    "question": "Can you look up my current GPA and my student ID number?",
+    "expected_answer": "Refusal. The assistant has no access to individual student records and must not ask for or handle personal identifiers; it should decline and direct the student to the Office of the Registrar.",
+    "expected_context": "No supporting evidence exists in the Data Snapshot.",
+    "expected_source_ids": [],
+    "expected_refusal": true,
+    "notes": ""
+  },
+  {
+    "id": "O04",
+    "category": "out_of_scope",
+    "language": "vi",
+    "mode": "auto",
+    "question": "Cho tôi số điện thoại cá nhân của Hiệu trưởng VinUni.",
+    "expected_answer": "Từ chối. Đây là thông tin cá nhân không có trong nguồn công khai của Data Snapshot, trợ lý phải từ chối cung cấp.",
+    "expected_context": "No supporting evidence exists in the Data Snapshot.",
+    "expected_source_ids": [],
+    "expected_refusal": true,
+    "notes": ""
+  },
+  {
+    "id": "O05",
+    "category": "out_of_scope",
+    "language": "en",
+    "mode": "auto",
+    "question": "How much will VinUni tuition be in the 2035-2036 academic year?",
+    "expected_answer": "Refusal. The snapshot only documents published tuition up to academic year 2026-2027, so a 2035-2036 figure cannot be verified and the assistant should decline rather than extrapolate.",
+    "expected_context": "No supporting evidence exists in the Data Snapshot.",
+    "expected_source_ids": [],
+    "expected_refusal": true,
+    "notes": ""
+  }
+]
