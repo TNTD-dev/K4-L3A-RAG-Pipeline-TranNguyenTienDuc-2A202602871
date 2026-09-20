@@ -1,45 +1,40 @@
-import streamlit as st
+"""VinUni Compass — application entry point.
+
+    python app.py            # http://127.0.0.1:8000
+    python app.py --reload   # restart on source changes
+
+The HTTP layer lives in ``src/vinuni_compass/webapp.py`` and is served by
+uvicorn, which is already part of the project's dependencies.
+"""
+
+from __future__ import annotations
+
+import argparse
+import os
+
 from dotenv import load_dotenv
 
 
 load_dotenv()
 
-st.set_page_config(
-    page_title="RAG Chatbot",
-    page_icon="",
-    layout="wide",
-)
 
-if "messages" not in st.session_state:
-    st.session_state.messages = []
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Run the VinUni Compass web client.")
+    parser.add_argument("--host", default="127.0.0.1")
+    parser.add_argument("--port", type=int, default=int(os.environ.get("PORT", 8000)))
+    parser.add_argument("--reload", action="store_true", help="Restart on source changes.")
+    args = parser.parse_args()
 
-with st.sidebar:
-    st.title("RAG Chatbot")
-    st.caption("Thay mô tả theo đề tài của nhóm")
-    top_k = st.slider("Số chunks", 3, 10, 5)
+    import uvicorn
 
-st.title("RAG Chatbot")
-st.caption("Thay tiêu đề và hướng dẫn sử dụng")
+    uvicorn.run(
+        "src.vinuni_compass.webapp:app",
+        host=args.host,
+        port=args.port,
+        reload=args.reload,
+        log_level="info",
+    )
 
-for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.markdown(message["content"])
-        # TODO: Hiển thị sources và retrieval score.
 
-query = st.chat_input("Nhập câu hỏi...")
-
-if query:
-    st.session_state.messages.append({"role": "user", "content": query})
-
-    with st.chat_message("user"):
-        st.markdown(query)
-
-    with st.chat_message("assistant"):
-        # TODO: Gọi generate_with_citation(query, top_k).
-        answer = "TODO: Itegration RAG Pipeline hêre"
-        sources = []
-        st.markdown(answer)
-
-        # TODO: Hiển thị sources và citation.
-
-    # TODO: Lưu answer và sources vào session state.
+if __name__ == "__main__":
+    main()

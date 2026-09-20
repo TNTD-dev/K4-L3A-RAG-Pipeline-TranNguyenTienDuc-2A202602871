@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>VinUni Compass</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"/>
+<link rel="stylesheet" href="/static/styles.css"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237C3AED' stroke-width='2'><circle cx='12' cy='12' r='10'/><polygon points='16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88'/></svg>"/>
+</head>
+<body>
+
+<!-- Icon sprite: every icon is referenced with <use>, so each path is defined once. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="i-compass"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88"/></g>
+    <g id="i-search"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></g>
+    <g id="i-home"><path d="M3 10.2 12 3l9 7.2V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></g>
+    <g id="i-history"><path d="M12 8v4l3 2"/><path d="M3.05 11a9 9 0 1 1 .5 4"/><path d="M3 5v5h5"/></g>
+    <g id="i-plus"><path d="M12 5v14"/><path d="M5 12h14"/></g>
+    <g id="i-chevron"><path d="m6 9 6 6 6-6"/></g>
+    <g id="i-send"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></g>
+    <g id="i-check"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m22 4-10 10.01L9 11.01"/></g>
+    <g id="i-alert"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></g>
+    <g id="i-notfound"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="m13.5 8.5-5 5"/><path d="m8.5 8.5 5 5"/></g>
+    <g id="i-link"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></g>
+    <g id="i-doc"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 13h4"/><path d="M10 17h4"/></g>
+    <g id="i-shield"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M12 8v4"/><path d="M12 16h.01"/></g>
+    <g id="i-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/></g>
+    <g id="i-moon"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></g>
+    <g id="i-trash"><path d="M3 6h18"/><path d="M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2"/><path d="M19 6l-1 14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1L5 6"/></g>
+    <g id="i-menu"><path d="M4 6h16M4 12h16M4 18h16"/></g>
+    <g id="i-sliders"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></g>
+  </defs>
+</svg>
+
+<div class="app">
+
+  <!-- ================= Sidebar ================= -->
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <svg class="ic brand-ic" viewBox="0 0 24 24"><use href="#i-compass"/></svg>
+      <span>VinUni&nbsp;Compass</span>
+    </div>
+
+    <button class="search-btn" id="search-btn" type="button">
+      <svg class="ic" viewBox="0 0 24 24"><use href="#i-search"/></svg>
+      <span>Search chats</span>
+      <kbd>/</kbd>
+    </button>
+
+    <nav class="nav" aria-label="Sections">
+      <button class="nav-item is-active" data-view="chat" type="button">
+        <svg class="ic" viewBox="0 0 24 24"><use href="#i-home"/></svg><span>Home</span>
+      </button>
+      <button class="nav-item" data-view="explore" type="button">
+        <svg class="ic" viewBox="0 0 24 24"><use href="#i-compass"/></svg><span>Explore</span>
+        <em class="nav-hint">Eval</em>
+      </button>
+      <button class="nav-item" data-view="history" type="button">
+        <svg class="ic" viewBox="0 0 24 24"><use href="#i-history"/></svg><span>History</span>
+      </button>
+    </nav>
+
+    <div class="threads" id="threads" aria-label="Recent chats"></div>
+
+    <footer class="side-foot">
+      <svg class="ic" viewBox="0 0 24 24"><use href="#i-shield"/></svg>
+      <p>Unofficial student project. Always confirm on the
+        <a href="https://vinuni.edu.vn" target="_blank" rel="noopener noreferrer">official VinUni site</a>.</p>
+    </footer>
+  </aside>
+
+  <div class="scrim" id="scrim" hidden></div>
+
+  <!-- ================= Main ================= -->
+  <main class="main">
+    <header class="topbar">
+      <button class="icon-btn only-mobile" id="menu-btn" type="button" aria-label="Open menu">
+        <svg class="ic" viewBox="0 0 24 24"><use href="#i-menu"/></svg>
+      </button>
+
+      <div class="mode-wrap">
+        <button class="mode-pill" id="mode-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+          <svg class="ic" viewBox="0 0 24 24"><use href="#i-compass"/></svg>
+          <span id="mode-label">Automatic</span>
+          <svg class="ic chev" viewBox="0 0 24 24"><use href="#i-chevron"/></svg>
+        </button>
+        <ul class="mode-menu" id="mode-menu" role="listbox" hidden>
+          <li><button role="option" data-mode="auto" type="button"><strong>Automatic</strong><em>Let Compass route the question</em></button></li>
+          <li><button role="option" data-mode="admissions" type="button"><strong>Admissions Mode</strong><em>Applications, scholarships, fees</em></button></li>
+          <li><button role="option" data-mode="student_life" type="button"><strong>Student Life Mode</strong><em>Residence, conduct, campus</em></button></li>
+        </ul>
+      </div>
+
+      <div class="topbar-right">
+        <button class="icon-btn" id="theme-btn" type="button" aria-label="Toggle dark mode">
+          <svg class="ic ic-sun" viewBox="0 0 24 24"><use href="#i-sun"/></svg>
+          <svg class="ic ic-moon" viewBox="0 0 24 24"><use href="#i-moon"/></svg>
+        </button>
+        <button class="btn-primary" id="new-chat" type="button">
+          <svg class="ic" viewBox="0 0 24 24"><use href="#i-plus"/></svg><span>New Chat</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="banner" id="banner" hidden>
+      <svg class="ic" viewBox="0 0 24 24"><use href="#i-alert"/></svg>
+      <span id="banner-text"></span>
+    </div>
+
+    <!-- ---------- Chat ---------- -->
+    <section class="view is-active" id="view-chat">
+      <div class="scroll" id="chat-scroll">
+        <div class="hero" id="hero">
+          <div class="orb" aria-hidden="true"></div>
+          <h1><span id="greeting">Good morning</span><br/>How can I <span class="grad">assist you today?</span></h1>
+          <p class="hero-sub">Ask about admissions, academics, or student life. Every answer
+            cites the public VinUni sources it used.</p>
+          <div class="starters" id="starters">
+            <button type="button">What do undergraduate applicants need to submit?</button>
+            <button type="button">Sinh viên nội trú cần tuân thủ những quy định nào?</button>
+            <button type="button">How are entry scholarships maintained each year?</button>
+          </div>
+        </div>
+        <div class="thread" id="thread"></div>
+      </div>
+
+      <div class="composer-wrap">
+        <form class="composer" id="composer">
+          <label class="sr-only" for="input">Your question</label>
+          <textarea id="input" rows="1" placeholder="Initiate a query or send a command to Compass…"
+                    autocomplete="off"></textarea>
+          <div class="composer-foot">
+            <div class="chips">
+              <span class="chip chip-static" title="How many chunks are retrieved">
+                <svg class="ic" viewBox="0 0 24 24"><use href="#i-doc"/></svg>
+                Sources
+                <button type="button" class="step" data-step="-1" aria-label="Fewer sources">−</button>
+                <b id="topk">5</b>
+                <button type="button" class="step" data-step="1" aria-label="More sources">+</button>
+              </span>
+              <button type="button" class="chip" id="chip-debug" aria-pressed="false">
+                <svg class="ic" viewBox="0 0 24 24"><use href="#i-sliders"/></svg>Retrieval details
+              </button>
+              <button type="button" class="chip" id="chip-demo" aria-pressed="false">
+                <svg class="ic" viewBox="0 0 24 24"><use href="#i-compass"/></svg>Demo mode
+              </button>
+            </div>
+            <button class="send" id="send" type="submit" aria-label="Send">
+              <svg class="ic" viewBox="0 0 24 24"><use href="#i-send"/></svg>
+            </button>
+          </div>
+        </form>
+        <p class="privacy">
+          <svg class="ic" viewBox="0 0 24 24"><use href="#i-shield"/></svg>
+          Don’t enter names, Student IDs, or financial account details.
+        </p>
+      </div>
+    </section>
+
+    <!-- ---------- Explore (evaluation) ---------- -->
+    <section class="view" id="view-explore">
+      <div class="scroll">
+        <div class="page">
+          <header class="page-head">
+            <div>
+              <h2>Explore — evaluation</h2>
+              <p>Dense-only vs hybrid + RRF on the same Data Snapshot, generator, prompt,
+                 top-k and evaluator. Only the retrieval strategy changes.</p>
+            </div>
+            <span class="tag" id="eval-tag">Offline report</span>
+          </header>
+          <div id="eval-body" class="eval-body"><p class="muted">Loading…</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- History ---------- -->
+    <section class="view" id="view-history">
+      <div class="scroll">
+        <div class="page">
+          <header class="page-head">
+            <div>
+              <h2>History</h2>
+              <p>Conversations stay in this browser only. Nothing is uploaded.</p>
+            </div>
+            <button class="btn-ghost" id="clear-all" type="button">
+              <svg class="ic" viewBox="0 0 24 24"><use href="#i-trash"/></svg>Clear all
+            </button>
+          </header>
+          <div id="history-body"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="/static/app.js" type="module"></script>
+</body>
+</html>
