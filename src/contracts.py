@@ -52,6 +52,7 @@ class GenerationResult(TypedDict):
     answer: str
     sources: list[SearchResult]
     retrieval_source: RetrievalSource
+    evidence_status: NotRequired[Literal["supported", "partial_evidence", "not_found"]]
 
 
 def validate_document(item: object, *, require_chunk: bool = False) -> None:
@@ -123,3 +124,5 @@ def validate_generation_result(result: object) -> None:
     validate_search_results(result.get("sources"))
     if result.get("retrieval_source") not in {"hybrid", "pageindex", "none"}:
         raise ValueError("generation retrieval_source is invalid")
+    if "evidence_status" in result and result["evidence_status"] not in {"supported", "partial_evidence", "not_found"}:
+        raise ValueError("generation evidence_status is invalid")
