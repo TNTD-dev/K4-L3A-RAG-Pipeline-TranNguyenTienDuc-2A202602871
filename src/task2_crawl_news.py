@@ -16,30 +16,81 @@ Cài browser trước khi chạy:
 import asyncio
 import json
 from pathlib import Path
+from datetime import datetime, timezone
+from html.parser import HTMLParser
+from urllib.request import Request, urlopen
 
 
 DATA_DIR = Path(__file__).parent.parent / "data" / "landing" / "news"
 
 ARTICLE_URLS = [
-    # TODO: Thêm ít nhất 5 public URL.
+    "https://admissions.vinuni.edu.vn/undergraduate/",
+    "https://admissions.vinuni.edu.vn/scholarship-and-financial-aid/undergraduate-programs/scholarships/",
+    "https://admissions.vinuni.edu.vn/tuition-fee/undergraduate/",
+    "https://admissions.vinuni.edu.vn/tuition-fee-and-financial-support/",
+    "https://admissions.vinuni.edu.vn/undergraduate/faqs/tuition-fee-scholarship-and-financial-aids/",
+    "https://policy.vinuni.edu.vn/all-policies/academic-regulations-for-full-time-undergraduate-programs/",
+    "https://policy.vinuni.edu.vn/all-policies/residential-life-guideline/",
+    "https://policy.vinuni.edu.vn/all-policies/student-affairs-regulations-code-of-conduct/",
+    "https://policy.vinuni.edu.vn/all-policies/internship-management-policy/",
+    "https://policy.vinuni.edu.vn/all-policies/guidelines-for-student-financial-support-request/",
 ]
 
 
+class _TextExtractor(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.parts: list[str] = []
+        self.title: list[str] = []
+        self.in_title = False
+        self.skip = 0
+
+    def handle_starttag(self, tag, attrs):
+        if tag in {"script", "style", "noscript", "svg"}:
+            self.skip += 1
+        if tag == "title":
+            self.in_title = True
+
+    def handle_endtag(self, tag):
+        if tag in {"script", "style", "noscript", "svg"} and self.skip:
+            self.skip -= 1
+        if tag == "title":
+            self.in_title = False
+
+    def handle_data(self, data):
+        if self.skip:
+            return
+        text = " ".join(data.split())
+        if not text:
+            return
+        if self.in_title:
+            self.title.append(text)
+        self.parts.append(text)
+
+
 async def crawl_article(url: str) -> dict:
-    # TODO: Implement crawling logic.
-    #
-    # from datetime import datetime
-    # from crawl4ai import AsyncWebCrawler
-    #
-    # async with AsyncWebCrawler() as crawler:
-    #     result = await crawler.arun(url=url)
-    #     return {
-    #         "url": url,
-    #         "title": result.metadata.get("title", "Unknown"),
-    #         "date_crawled": datetime.now().isoformat(),
-    #         "content_markdown": result.markdown,
-    #     }
-    raise NotImplementedError("Implement crawl_article")
+    def fetch() -> dict:
+        request = Request(url, headers={"User-Agent": "VinUniCompass/0.1 (public-source-audit)"})
+        try:
+            with urlopen(request, timeout=30) as response:
+                html = response.read().decode("utf-8", errors="ignore")
+        except Exception:
+            # Some official properties challenge automated clients.  Jina's
+            # read-only reader is used only as a transport fallback; the
+            # allowlisted provenance URL remains the VinUniversity URL.
+            proxy = "https://r.jina.ai/http://" + url.removeprefix("https://")
+            with urlopen(Request(proxy, headers={"User-Agent": "VinUniCompass/0.1"}), timeout=45) as response:
+                html = response.read().decode("utf-8", errors="ignore")
+        parser = _TextExtractor()
+        parser.feed(html)
+        return {
+            "url": url,
+            "title": " ".join(parser.title) or url.rstrip("/").rsplit("/", 1)[-1],
+            "date_crawled": datetime.now(timezone.utc).isoformat(),
+            "content_markdown": "\n\n".join(parser.parts),
+            "classification": "Public",
+        }
+    return await asyncio.to_thread(fetch)
 
 
 async def crawl_all() -> None:

@@ -1,4 +1,4 @@
-from typing import Literal, TypedDict
+from typing import Literal, NotRequired, TypedDict
 
 
 RetrievalMethod = Literal["dense", "bm25", "hybrid", "pageindex"]
@@ -10,6 +10,14 @@ class DocumentMetadata(TypedDict):
     title: str
     doc_type: str
     url: str | None
+    # Optional provenance fields added by the reviewed Data Snapshot.  The
+    # original course contract only requires the four fields above, so these
+    # remain optional at runtime and are intentionally accepted by validators.
+    mode: NotRequired[str]
+    classification: NotRequired[str]
+    policy_version: NotRequired[str | None]
+    effective_date: NotRequired[str | None]
+    crawl_timestamp: NotRequired[str | None]
 
 
 class ChunkMetadata(DocumentMetadata):

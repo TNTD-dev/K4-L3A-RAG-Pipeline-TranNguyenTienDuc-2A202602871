@@ -12,6 +12,8 @@ Nếu website chặn crawler, hãy chọn nguồn công khai khác; không vư�
 """
 
 from pathlib import Path
+import json
+from urllib.request import Request, urlopen
 
 
 DATA_DIR = Path(__file__).parent.parent / "data" / "landing" / "legal"
@@ -25,19 +27,27 @@ def setup_directory() -> None:
 
 def download_documents() -> None:
     """Tải ít nhất 3 PDF/DOCX từ nguồn công khai."""
-    # TODO: Có thể tải thủ công hoặc dùng requests.
-    #
-    # Ví dụ:
-    # import requests
-    #
-    # sources = {
-    #     "policy-a.pdf": "https://example.edu/policy-a.pdf",
-    # }
-    # for filename, url in sources.items():
-    #     response = requests.get(url, timeout=30)
-    #     response.raise_for_status()
-    #     (DATA_DIR / filename).write_bytes(response.content)
-    raise NotImplementedError("Implement download_documents")
+    manifest_path = DATA_DIR.parent.parent / "source_manifest.json"
+    if not manifest_path.exists():
+        print(f"Missing reviewed manifest: {manifest_path}")
+        return
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    for item in manifest:
+        if item.get("content_type") not in {"pdf", "policy", "legal"}:
+            continue
+        target = DATA_DIR / f"{item['source_id']}.pdf"
+        if target.exists() and target.stat().st_size > 1024:
+            continue
+        request = Request(item["url"], headers={"User-Agent": "VinUniCompass/0.1 (public-source-audit)"})
+        try:
+            with urlopen(request, timeout=60) as response:
+                payload = response.read()
+            if len(payload) <= 1024:
+                raise ValueError("response is unexpectedly small")
+            target.write_bytes(payload)
+            print(f"Saved: {target}")
+        except Exception as error:
+            print(f"Failed: {item['url']} — {error}")
 
 
 if __name__ == "__main__":

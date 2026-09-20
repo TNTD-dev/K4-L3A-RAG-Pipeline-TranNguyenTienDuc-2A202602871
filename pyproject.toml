@@ -34,8 +34,8 @@ dependencies = [
 [project.optional-dependencies]
 dev = ["pytest>=7.0.0"]
 
-[tool.setuptools]
-packages = ["src"]
+[tool.setuptools.packages.find]
+include = ["src*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
