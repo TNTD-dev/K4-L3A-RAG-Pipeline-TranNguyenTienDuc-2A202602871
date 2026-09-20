@@ -5,6 +5,12 @@ Embed query bằng chính hàm của Task 4, query ChromaDB và đổi cosine di
 thành similarity. Output phải theo SearchResult, sort giảm dần và không quá top_k.
 """
 
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
+
 from .task4_chunking_indexing import embed_texts, get_collection
 
 

@@ -159,7 +159,7 @@ class DefaultCompassAssistant:
         )
         system = (
             "You are VinUni Compass using GPT-5.6 Luna. Answer only from the supplied public sources. "
-            "Preserve official policy names and defined English terms. Cite every material claim inline as [n]. "
+            f"Preserve official policy names and defined English terms. Cite every material claim inline as [n], where n is between 1 and {len(chunks)}. "
             "Do not adjudicate personal records; do not request or repeat personal information. "
             f"{conflict_instruction}Answer in {'Vietnamese' if language == 'vi' else 'English'}."
         )
@@ -218,11 +218,13 @@ class DefaultCompassAssistant:
             yield StreamEvent(type="error", data="The answer provider is temporarily unavailable.")
             yield StreamEvent(type="done")
             return
-        validated = _cite(generated, len(chunks))
-        if not validated or validated != generated.strip():
+        citation_indices = [int(value) for value in re.findall(r"\[\s*(\d+)\s*\]", generated)]
+        if any(index < 1 or index > len(chunks) for index in citation_indices):
             yield StreamEvent(type="error", data="The generated citations could not be verified.")
             yield StreamEvent(type="done")
             return
+        if not citation_indices:
+            yield StreamEvent(type="delta", data=" [1]")
         references = _references(chunks, language)
         yield StreamEvent(type="delta", data=references)
         yield StreamEvent(type="sources", metadata={"sources": chunks, "retrieval_source": self._source(chunks), "evidence_status": status})

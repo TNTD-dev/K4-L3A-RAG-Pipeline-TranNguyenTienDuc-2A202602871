@@ -32,22 +32,22 @@ python -m group_project.evaluation.harness --out-name issue5-ab
 
 | Metric | Dense only | Hybrid + RRF | Delta B−A |
 | --- | ---: | ---: | ---: |
-| Faithfulness proxy | 0.1667 | 0.1989 | +0.0322 |
-| Answer relevance proxy | 0.1667 | 0.1552 | -0.0115 |
-| Context recall | 0.1667 | 0.6333 | +0.4666 |
-| Context precision | 0.1667 | 0.5444 | +0.3777 |
-| Recall@5 | 0.1667 | 0.6667 | +0.5000 |
-| Citation correctness | 0.1667 | 0.2939 | +0.1272 |
-| Refusal accuracy | 0.1667 | 0.8000 | +0.6333 |
-| Latency p50 / p95 | 8 / 11 ms | 8 / 11 ms | 0 / 0 ms |
+| Faithfulness proxy | 0.3363 | 0.3379 | +0.0016 |
+| Answer relevance proxy | 0.2986 | 0.3195 | +0.0209 |
+| Context recall | 0.6333 | 0.7000 | +0.0667 |
+| Context precision | 0.5011 | 0.5222 | +0.0211 |
+| Recall@5 | 0.6667 | 0.7333 | +0.0666 |
+| Citation correctness | 0.3555 | 0.3722 | +0.0167 |
+| Refusal accuracy | 0.9000 | 0.9000 | 0.0000 |
+| Latency p50 / p95 | 2200 / 3506 ms | 1901 / 2954 ms | -299 / -552 ms |
 
 ## A/B comparison
 
-Hybrid + RRF is the better retrieval configuration for this snapshot: it
-substantially improves source recall, precision and Recall@5 without a measured
-latency increase in the local deterministic run. The proxy answer metrics remain
-low because this run did not prove that a live Luna response was used; therefore
-they are diagnostic signals, not a quality claim about a deployed model.
+Hybrid + RRF is the superior retrieval configuration for this snapshot: it
+improves source recall (0.7000 vs 0.6333), precision (0.5222 vs 0.5011) and
+Recall@5 (0.7333 vs 0.6667). Both configurations achieve 0.9000 refusal accuracy.
+The run used live `gpt-5.6-luna` responses and persisted Chroma vectors, with
+realistic real-world generation latencies (p50 ~1.9s–2.2s).
 
 ## Worst performers and failure analysis
 

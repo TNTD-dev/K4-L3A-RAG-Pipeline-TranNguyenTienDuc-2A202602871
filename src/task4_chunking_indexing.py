@@ -18,6 +18,12 @@ import os
 import re
 from typing import Any
 
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
+
 
 STANDARDIZED_DIR = Path(__file__).parent.parent / "data" / "standardized"
 CHROMA_DIR = Path(__file__).parent.parent / "chroma_db"
@@ -87,8 +93,14 @@ def embed_texts(texts: list[str]) -> list[list[float]]:
     if provider == "openai" and api_key:
         try:
             from openai import OpenAI
-            response = OpenAI(api_key=api_key).embeddings.create(model=EMBEDDING_MODEL, input=texts)
-            vectors = [list(map(float, item.embedding)) for item in sorted(response.data, key=lambda item: item.index)]
+            client = OpenAI(api_key=api_key)
+            vectors: list[list[float]] = []
+            batch_size = 100
+            for i in range(0, len(texts), batch_size):
+                batch = texts[i : i + batch_size]
+                response = client.embeddings.create(model=EMBEDDING_MODEL, input=batch)
+                batch_vectors = [list(map(float, item.embedding)) for item in sorted(response.data, key=lambda item: item.index)]
+                vectors.extend(batch_vectors)
             if any(len(vector) != EMBEDDING_DIM for vector in vectors):
                 raise ValueError("OpenAI embedding dimension does not match collection invariant")
             return vectors
@@ -208,12 +220,15 @@ def index_to_vectorstore(chunks: list[dict]) -> None:
     if not chunks:
         return
     collection = get_collection()
-    collection.upsert(
-        ids=[chunk["id"] for chunk in chunks],
-        documents=[chunk["content"] for chunk in chunks],
-        embeddings=[chunk["embedding"] for chunk in chunks],
-        metadatas=[chunk["metadata"] for chunk in chunks],
-    )
+    batch_size = 200
+    for i in range(0, len(chunks), batch_size):
+        batch = chunks[i : i + batch_size]
+        collection.upsert(
+            ids=[chunk["id"] for chunk in batch],
+            documents=[chunk["content"] for chunk in batch],
+            embeddings=[chunk["embedding"] for chunk in batch],
+            metadatas=[chunk["metadata"] for chunk in batch],
+        )
     _INDEXED_CHUNKS = [{key: value for key, value in chunk.items() if key != "embedding"} for chunk in chunks]
     # Task 6 imports this list lazily to avoid a module cycle at import time.
     try:

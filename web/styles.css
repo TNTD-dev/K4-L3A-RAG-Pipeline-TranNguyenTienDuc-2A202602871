@@ -69,6 +69,7 @@
    system UI face when that request is unavailable. */
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html, body { height: 100%; }
 body {
   margin: 0; background: var(--bg); color: var(--ink);
@@ -222,6 +223,7 @@ kbd {
   border: 1px solid var(--wa-line); border-radius: var(--r-md);
   background: var(--wa-bg); color: var(--wa-fg); font-size: 13px;
 }
+.banner[hidden] { display: none !important; }
 
 /* ===================== Views ===================== */
 .view { display: none; flex: 1; min-height: 0; flex-direction: column; }
@@ -289,6 +291,18 @@ kbd {
 .answer.none { border-left-color: var(--no-line); }
 .answer p { margin: 0 0 10px; }
 .answer p:last-child { margin-bottom: 0; }
+.answer ul, .answer ol { margin: 0 0 10px; padding-left: 22px; }
+.answer ul:last-child, .answer ol:last-child { margin-bottom: 0; }
+.answer li { margin-bottom: 4px; line-height: 1.5; }
+.answer li:last-child { margin-bottom: 0; }
+.answer strong, .answer b { font-weight: 700; color: var(--ink); }
+.answer em, .answer i { font-style: italic; }
+.answer h1, .answer h2, .answer h3, .answer h4 { margin: 14px 0 6px; font-size: 14.5px; font-weight: 700; color: var(--ink); }
+.answer h1:first-child, .answer h2:first-child, .answer h3:first-child, .answer h4:first-child { margin-top: 0; }
+.answer blockquote { margin: 8px 0 10px; padding: 4px 12px; border-left: 3px solid var(--line); color: var(--ink-2); background: var(--surface-2); border-radius: 0 var(--r-sm) var(--r-sm) 0; }
+.answer code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 12px; padding: 2px 5px; border-radius: 4px; background: var(--surface-2); }
+.answer pre { margin: 8px 0 10px; padding: 10px 12px; border-radius: var(--r-md); background: var(--surface-2); overflow-x: auto; }
+.answer pre code { padding: 0; background: transparent; }
 
 .status {
   display: inline-flex; align-items: center; gap: 6px; margin-bottom: 9px;

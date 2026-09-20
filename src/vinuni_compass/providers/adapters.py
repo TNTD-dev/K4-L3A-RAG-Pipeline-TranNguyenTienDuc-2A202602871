@@ -27,8 +27,14 @@ class OpenAIEmbeddingAdapter:
         if not texts:
             return []
         from openai import OpenAI
-        response = OpenAI(api_key=self.api_key).embeddings.create(model=self.model, input=list(texts))
-        vectors = [list(map(float, item.embedding)) for item in sorted(response.data, key=lambda item: item.index)]
+        client = OpenAI(api_key=self.api_key)
+        vectors: list[list[float]] = []
+        batch_size = 100
+        for i in range(0, len(texts), batch_size):
+            batch = list(texts[i : i + batch_size])
+            response = client.embeddings.create(model=self.model, input=batch)
+            batch_vectors = [list(map(float, item.embedding)) for item in sorted(response.data, key=lambda item: item.index)]
+            vectors.extend(batch_vectors)
         if any(len(vector) != self.dimension for vector in vectors):
             raise ValueError("OpenAI embedding dimension does not match collection invariant")
         return vectors
@@ -44,18 +50,31 @@ class OpenAIGenerationAdapter:
 
     def complete(self, system_prompt: str, user_message: str) -> str:
         from openai import OpenAI
-        response = OpenAI(api_key=self.api_key).chat.completions.create(
-            model=self.model, temperature=self.temperature,
-            messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": user_message}],
-        )
+        request = {
+            "model": self.model,
+            "messages": [
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_message},
+            ],
+        }
+        if not self.model.startswith("gpt-5.6"):
+            request["temperature"] = self.temperature
+        response = OpenAI(api_key=self.api_key).chat.completions.create(**request)
         return response.choices[0].message.content or ""
 
     def stream(self, system_prompt: str, user_message: str) -> Iterable[str]:
         from openai import OpenAI
-        response = OpenAI(api_key=self.api_key).chat.completions.create(
-            model=self.model, temperature=self.temperature, stream=True,
-            messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": user_message}],
-        )
+        request = {
+            "model": self.model,
+            "stream": True,
+            "messages": [
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_message},
+            ],
+        }
+        if not self.model.startswith("gpt-5.6"):
+            request["temperature"] = self.temperature
+        response = OpenAI(api_key=self.api_key).chat.completions.create(**request)
         for event in response:
             delta = event.choices[0].delta.content if event.choices else None
             if delta:

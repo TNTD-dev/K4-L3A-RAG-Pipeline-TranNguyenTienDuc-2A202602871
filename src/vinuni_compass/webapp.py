@@ -222,7 +222,7 @@ def _stream_events(assistant: Any, request: ChatRequest, warning: str | None) ->
                 )
                 yield _sse({"type": "sources", "metadata": {"sources": sources, "evidence_status": status}})
             elif event.type == "error":
-                yield _sse({"type": "error", "data": SAFE_FAILURE_MESSAGE})
+                yield _sse({"type": "error", "data": event.data or SAFE_FAILURE_MESSAGE})
                 return
             elif event.type == "done":
                 break

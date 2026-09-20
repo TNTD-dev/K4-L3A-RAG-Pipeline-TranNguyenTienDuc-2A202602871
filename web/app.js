@@ -129,22 +129,27 @@ syncChips();
 }
 
 // ---------------------------------------------------------------- rendering
-/** Escape the answer, then turn `[n]` markers into chips that jump to a card.
+/** Render markdown, then turn `[n]` markers into chips that jump to a card.
     A marker with no matching source stays plain text — the UI never invents a
     link to evidence that was not returned. */
 function renderAnswer(text, msgKey, sourceCount) {
-  return esc(text)
-    .split(/\n{2,}/)
-    .map((para) => {
-      const body = para.replace(/\n/g, "<br/>").replace(/\[(\d{1,2})\]/g, (m, n) => {
-        const i = Number(n);
-        return i >= 1 && i <= sourceCount
-          ? `<a class="cite" href="#src-${msgKey}-${i}" title="Source ${i}">${i}</a>`
-          : m;
-      });
-      return `<p>${body}</p>`;
-    })
-    .join("");
+  const clean = String(text ?? "").replace(/\n+(?:Nguồn tham khảo|Sources):[\s\S]*$/i, "").trim();
+  let html = "";
+  if (typeof window !== "undefined" && window.marked?.parse) {
+    const safe = clean.replace(/</g, "&lt;");
+    html = window.marked.parse(safe, { breaks: true, gfm: true });
+  } else {
+    html = esc(clean)
+      .split(/\n{2,}/)
+      .map((para) => `<p>${para.replace(/\n/g, "<br/>")}</p>`)
+      .join("");
+  }
+  return html.replace(/\[(\d{1,2})\]/g, (m, n) => {
+    const i = Number(n);
+    return i >= 1 && i <= sourceCount
+      ? `<a class="cite" href="#src-${msgKey}-${i}" title="Source ${i}">${i}</a>`
+      : m;
+  });
 }
 
 const META_FIELDS = [
@@ -428,12 +433,16 @@ async function renderEval() {
         <code>group_project/evaluation/results/</code>.</span></div>`
     : "";
 
+  const shortGen = String(run.generator || "—").split(" ")[0];
+  const shortEval = String(run.evaluator || "—").split(" ")[0];
+  const shortSnap = String(run.data_snapshot || "—").split(" ")[0];
+
   const kpis = `<div class="kpis">
     <div class="stat"><div class="k">Golden cases</div><div class="v">${esc(run.dataset_size ?? "—")}</div></div>
     <div class="stat"><div class="k">top_k</div><div class="v">${esc(run.top_k ?? "—")}</div></div>
-    <div class="stat"><div class="k">Generator</div><div class="v sm">${esc(run.generator ?? "—")}</div></div>
-    <div class="stat"><div class="k">Evaluator</div><div class="v sm">${esc(run.evaluator ?? "—")}</div></div>
-    <div class="stat"><div class="k">Data Snapshot</div><div class="v sm">${esc(run.data_snapshot ?? "—")}</div></div>
+    <div class="stat" title="${esc(run.generator ?? '')}"><div class="k">Generator</div><div class="v sm">${esc(shortGen)}</div></div>
+    <div class="stat" title="${esc(run.evaluator ?? '')}"><div class="k">Evaluator</div><div class="v sm">${esc(shortEval)}</div></div>
+    <div class="stat" title="${esc(run.data_snapshot ?? '')}"><div class="k">Data Snapshot</div><div class="v sm">${esc(shortSnap)}</div></div>
   </div>`;
 
   body.innerHTML = sampleNote + kpis +

@@ -70,10 +70,14 @@ def call_llm(system_prompt: str, user_message: str) -> str:
     if provider == "openai" and key:
         try:
             from openai import OpenAI
-            response = OpenAI(api_key=key).chat.completions.create(
-                model=LLM_MODEL or "gpt-5.6-luna", temperature=TEMPERATURE,
-                messages=[{"role": "system", "content": system_prompt}, {"role": "user", "content": user_message}],
-            )
+            model_name = LLM_MODEL or "gpt-5.6-luna"
+            req = {
+                "model": model_name,
+                "messages": [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_message}],
+            }
+            if not model_name.startswith("gpt-5.6"):
+                req["temperature"] = TEMPERATURE
+            response = OpenAI(api_key=key).chat.completions.create(**req)
             return response.choices[0].message.content or ""
         except Exception:
             pass
