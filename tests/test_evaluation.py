@@ -115,6 +115,10 @@ def test_context_precision_is_zero_without_a_hit():
     assert H.average_precision([], {"a"}) == 0.0
 
 
+def test_context_precision_does_not_reward_duplicate_chunks_from_one_source():
+    assert H.average_precision(["a", "a", "a"], {"a"}) == 1.0
+
+
 def test_recall_at_5_ignores_hits_beyond_the_cutoff():
     ranked = ["z", "z", "z", "z", "z", "a"]
     assert H.recall_at_k(ranked, {"a"}, k=5) == 0.0

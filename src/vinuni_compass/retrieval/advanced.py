@@ -40,6 +40,7 @@ class AdvancedRetrievalEngine:
         generation_adapter: GenerationPort | None = None,
         reranker_adapter: RerankerPort | None = None,
         use_hybrid: bool = True,
+        use_pageindex_fallback: bool = True,
         use_luna_expansion: bool = False,
         use_jina_reranking: bool = False,
         score_threshold: float = 0.3,
@@ -52,6 +53,7 @@ class AdvancedRetrievalEngine:
         self.generation_adapter = generation_adapter
         self.reranker_adapter = reranker_adapter
         self.use_hybrid = use_hybrid
+        self.use_pageindex_fallback = use_pageindex_fallback
         self.use_luna_expansion = use_luna_expansion
         self.use_jina_reranking = use_jina_reranking
         self.score_threshold = score_threshold
@@ -238,7 +240,7 @@ class AdvancedRetrievalEngine:
             except Exception:
                 candidates = candidates[:top_k]
 
-        if best_dense_score < self.score_threshold:
+        if self.use_pageindex_fallback and best_dense_score < self.score_threshold:
             fallback = self._pageindex_fallback(expanded_query, mode, top_k)
             if fallback:
                 return fallback

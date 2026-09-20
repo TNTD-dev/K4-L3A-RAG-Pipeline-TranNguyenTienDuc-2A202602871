@@ -19,7 +19,12 @@ from .retrieval.advanced import AdvancedRetrievalEngine
 from .settings import Settings
 
 
-def build_assistant(settings: Settings | None = None) -> CompassAssistant:
+def build_assistant(
+    settings: Settings | None = None,
+    *,
+    use_hybrid: bool | None = None,
+    use_pageindex_fallback: bool = True,
+) -> CompassAssistant:
     """Build the production assistant.
 
     This is the only place where the default concrete adapters are selected.
@@ -27,6 +32,7 @@ def build_assistant(settings: Settings | None = None) -> CompassAssistant:
     deterministic tests without API keys.
     """
     settings = settings or Settings.from_env()
+    selected_hybrid = settings.use_hybrid if use_hybrid is None else use_hybrid
     corpus = chunk_documents(load_documents())
     openai_key = os.getenv("OPENAI_API_KEY", "").strip()
     embedding = (
@@ -54,7 +60,8 @@ def build_assistant(settings: Settings | None = None) -> CompassAssistant:
         page_index=TaskPageIndexAdapter(),
         generation_adapter=openai_generation,
         reranker_adapter=reranker,
-        use_hybrid=settings.use_hybrid,
+        use_hybrid=selected_hybrid,
+        use_pageindex_fallback=use_pageindex_fallback,
         use_luna_expansion=settings.use_luna_expansion and openai_generation is not None,
         use_jina_reranking=settings.use_jina_reranking and reranker is not None,
         score_threshold=settings.score_threshold,

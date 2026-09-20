@@ -36,7 +36,6 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from src.vinuni_compass.assistant.service import DefaultCompassAssistant  # noqa: E402
 from src.vinuni_compass.models import ChatRequest  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
@@ -124,12 +123,15 @@ def average_precision(retrieved: Sequence[str], expected: set[str]) -> float:
     """Rank-aware context precision: relevant chunks early score higher."""
     if not retrieved or not expected:
         return 0.0
-    hits, total = 0, 0.0
+    hits, total, seen = 0, 0.0, set()
     for rank, source_id in enumerate(retrieved, start=1):
+        if source_id in seen:
+            continue
+        seen.add(source_id)
         if source_id in expected:
             hits += 1
             total += hits / rank
-    return round(total / min(len(expected), len(retrieved)), 4) if hits else 0.0
+    return round(total / min(len(expected), len(seen)), 4) if hits else 0.0
 
 
 def context_recall(retrieved: Sequence[str], expected: set[str]) -> float:
@@ -181,34 +183,23 @@ def citation_correctness(answer: str, sources: Sequence[dict], expected: set[str
 # Wiring
 # ---------------------------------------------------------------------------
 
-class ConfiguredRetrieval:
-    """A :class:`RetrievalEngine` whose only knob is the fusion strategy.
-
-    ``src.task9_retrieval_pipeline.retrieve`` is part of the published module
-    contract and already exposes ``use_reranking``, so switching between
-    dense-only and hybrid + RRF needs no change to the retrieval workstream.
-    """
-
-    def __init__(self, *, use_reranking: bool, score_threshold: float = 0.3) -> None:
-        self.use_reranking = use_reranking
-        self.score_threshold = score_threshold
-
-    def retrieve(self, query: str, *, mode: str = "auto", top_k: int = 5) -> list[dict]:
-        from src.task9_retrieval_pipeline import retrieve as task_retrieve
-
-        del mode  # routing is a retrieval-workstream concern, not the harness's
-        return task_retrieve(
-            query,
-            top_k=top_k,
-            score_threshold=self.score_threshold,
-            use_reranking=self.use_reranking,
-        )
-
-
 def default_assistant_factory(use_reranking: bool, score_threshold: float) -> Any:
-    return DefaultCompassAssistant(
-        ConfiguredRetrieval(use_reranking=use_reranking, score_threshold=score_threshold),
-        score_threshold=score_threshold,
+    """Use the shared production composition root for a controlled A/B run.
+
+    Both configurations use the same corpus, generator, prompt, top-k and
+    threshold.  PageIndex is disabled in both so the only changing variable is
+    dense-only retrieval versus dense + BM25 fused by RRF.
+    """
+    from dataclasses import replace
+
+    from src.vinuni_compass.bootstrap import build_assistant
+    from src.vinuni_compass.settings import Settings
+
+    settings = replace(Settings.from_env(), score_threshold=score_threshold)
+    return build_assistant(
+        settings,
+        use_hybrid=use_reranking,
+        use_pageindex_fallback=False,
     )
 
 

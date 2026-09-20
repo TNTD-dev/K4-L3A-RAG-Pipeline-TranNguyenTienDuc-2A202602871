@@ -11,7 +11,7 @@ Nhóm tự chọn bài toán và thu thập dữ liệu phù hợp; repo không 
 - Repository nhóm chạy được.
 - Tối thiểu 3 tài liệu chính sách và 5 bài viết/page do nhóm tự thu thập.
 - Pipeline: convert → chunk → index → dense + BM25 → RRF → fallback → generation có citation.
-- Chatbot Streamlit hiển thị câu trả lời và nguồn đã dùng.
+- Chatbot web hiển thị câu trả lời và nguồn đã dùng.
 - Golden dataset tối thiểu 15 câu; đánh giá 4 metric và so sánh A/B.
 - `group_project/evaluation/RESULT.md`.
 - Mỗi thành viên nộp báo cáo cá nhân theo template trong `group_project/ịndividual/INDIVIDUAL_REPORT.md`.
@@ -40,7 +40,7 @@ python -m src.task4_chunking_indexing
 pytest -q
 
 # 3. Chạy sản phẩm
-streamlit run app.py
+python app.py
 ```
 
 ## Lộ trình 3 giờ
